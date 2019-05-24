@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.challenge.mapper.StuFileMapper" >
+  <resultMap id="BaseResultMap" type="edu.challenge.entity.StuFile" >
+    <constructor >
+      <idArg column="student_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="task_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="file_release" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    student_id, task_id, file_release
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.challenge.entity.StuFileExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from stu_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="edu.challenge.entity.StuFileKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from stu_file
+    where student_id = #{studentId,jdbcType=VARCHAR}
+      and task_id = #{taskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="edu.challenge.entity.StuFileKey" >
+    delete from stu_file
+    where student_id = #{studentId,jdbcType=VARCHAR}
+      and task_id = #{taskId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="edu.challenge.entity.StuFileExample" >
+    delete from stu_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="edu.challenge.entity.StuFile" >
+    insert into stu_file (student_id, task_id, file_release
+      )
+    values (#{studentId,jdbcType=VARCHAR}, #{taskId,jdbcType=INTEGER}, #{fileRelease,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.challenge.entity.StuFile" >
+    insert into stu_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="fileRelease != null" >
+        file_release,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentId != null" >
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="fileRelease != null" >
+        #{fileRelease,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="edu.challenge.entity.StuFileExample" resultType="java.lang.Integer" >
+    select count(*) from stu_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update stu_file
+    <set >
+      <if test="record.studentId != null" >
+        student_id = #{record.studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskId != null" >
+        task_id = #{record.taskId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fileRelease != null" >
+        file_release = #{record.fileRelease,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update stu_file
+    set student_id = #{record.studentId,jdbcType=VARCHAR},
+      task_id = #{record.taskId,jdbcType=INTEGER},
+      file_release = #{record.fileRelease,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.challenge.entity.StuFile" >
+    update stu_file
+    <set >
+      <if test="fileRelease != null" >
+        file_release = #{fileRelease,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where student_id = #{studentId,jdbcType=VARCHAR}
+      and task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.challenge.entity.StuFile" >
+    update stu_file
+    set file_release = #{fileRelease,jdbcType=TIMESTAMP}
+    where student_id = #{studentId,jdbcType=VARCHAR}
+      and task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+
+  <select id="countweijiao" resultType="java.lang.Integer">
+    SELECT count(*) FROM tb_task t where t.task_id NOT IN 
+  (SELECT s.task_id FROM stu_file s WHERE student_id=#{studentId})
+  AND t.class_id=#{classId}
+    
+  </select>
+</mapper>

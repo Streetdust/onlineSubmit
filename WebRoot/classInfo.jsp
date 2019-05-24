@@ -1,8 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh">
+
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<base href="<%=basePath%>">
 <head>
-    <title>Flatty - Flat administration template</title>
+    <title>onlineSubmit</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
 
     <!--[if lt IE 9]>
@@ -71,7 +78,7 @@
             <div class='container-fluid'>
                 <a class='brand' href='index-stu.jsp'>
                     <i class='icon-heart-empty'></i>
-                    <span class='hidden-phone'>Flatty</span>
+                    <span class='hidden-phone'>onlieSubmit</span>
                 </a>
                 <a class='toggle-nav btn pull-left' href='#'>
                     <i class='icon-reorder'></i>
@@ -155,82 +162,9 @@
                     <li class='dropdown medium only-icon widget'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <i class='icon-rss'></i>
-                            <div class='label'>5</div>
+                            
                         </a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            John Doe signed up
-                                            <small class='muted'>just now</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #002
-                                            <small class='muted'>3 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            America Leannon commented Flatty with veeery long text.
-                                            <small class='muted'>1 hour ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            Jane Doe signed up
-                                            <small class='muted'>last week</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #001
-                                            <small class='muted'>1 year ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='widget-footer'>
-                                <a href='#'>所有消息</a>
-                            </li>
-                        </ul>
+                       
                     </li>
                     <!-- 消息提示栏 end -->
 
@@ -239,7 +173,7 @@
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23'/>
-                            <span class='user-name hidden-phone'>张希光</span>
+                            <span class='user-name hidden-phone'>${nowstu.studentName }</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
@@ -249,19 +183,7 @@
                                     个人中心
                                 </a>
                             </li>
-                            <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-cog'></i>
-                                    设置
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='sign_in.html'>
-                                    <i class='icon-signout'></i>
-                                    安全退出
-                                </a>
-                            </li>
+                           
                         </ul>
                     </li>
                     <!-- 用户栏 end -->
@@ -269,15 +191,6 @@
                 <!-- 导航栏右侧 end -->
 
 
-                <!-- 导航栏搜索栏 start -->
-                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone"
-                      method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..."
-                       type="text" value=""/>
-                </form>
-                <!-- 导航栏搜索栏 end -->
 
 
             </div>
@@ -291,7 +204,7 @@
 
             <div class='search'>
                 <!--不知道干啥的搜索框（暂时注掉） start-->
-                <form accept-charset="UTF-8" action="search_results.html" method="get"/>
+                <form accept-charset="UTF-8" action="search_results.html" method="get">
                 <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
                 <div class='search-wrapper'>
                     <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text"
@@ -305,7 +218,7 @@
 
             <!--左侧导航栏 start-->
             <ul class='nav nav-stacked'>
-                <li class=''>
+                <li class='active'>
                     <a href='index-stu.jsp'>
                         <i class='icon-dashboard'></i>
                         <span>主页</span>
@@ -318,26 +231,26 @@
                         <i class='icon-angle-down angle-down'></i>
                     </a>
                     <ul class='nav nav-stacked'>
-                        <li class=''>
-                            <a href='allHomework.jsp'>
+                        <li class=''>             
+                            <a href='taskctlr/selectTask.do?xk=chinese&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>语文</span>
                             </a>
                         </li>
                         <li class=''>
-                            <a href='allHomework.jsp'>
+                            <a href='taskctlr/selectTask.do?xk=math&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>数学</span>
                             </a>
                         </li>
                         <li class=''>
-                            <a href='allHomework.jsp'>
+                            <a href='taskctlr/selectTask.do?xk=english&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>英语</span>
                             </a>
                         </li>
                         <li class=''>
-                            <a href='allHomework.jsp'>
+                            <a href='taskctlr/selectTask.do?xk=computer&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>计算机</span>
                             </a>
@@ -350,17 +263,29 @@
                         <span>查看未交作业</span>
                         <i class='icon-angle-down angle-down'></i>
                     </a>
-                    <ul class='nav nav-stacked'>
+                   <ul class='nav nav-stacked'>
                         <li class=''>
-                            <a href='unSubmitWork.jsp'>
+                            <a href='taskctlr/unsubmit.do?xk=chinese&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>语文</span>
                             </a>
                         </li>
                         <li class=''>
-                            <a href='unSubmitWork.jsp'>
+                            <a href='taskctlr/unsubmit.do?xk=math&bj=${nowstu.classId}'>
+                                <i class='icon-caret-right'></i>
+                                <span>数学</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='taskctlr/unsubmit.do?xk=english&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>英语</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='taskctlr/unsubmit.do?xk=computer&bj=${nowstu.classId}'>
+                                <i class='icon-caret-right'></i>
+                                <span>计算机</span>
                             </a>
                         </li>
                     </ul>
@@ -373,26 +298,37 @@
                     </a>
                     <ul class='nav nav-stacked'>
                         <li class=''>
-                            <a href='submitWork.jsp'>
+                            <a href='taskctlr/submit.do?xk=chinese&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>语文</span>
-                                < /a>
+                            </a>
                         </li>
                         <li class=''>
-                            <a href='submitWork.jsp'>
+                            <a href='taskctlr/submit.do?xk=math&bj=${nowstu.classId}'>
+                                <i class='icon-caret-right'></i>
+                                <span>数学</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='taskctlr/submit.do?xk=english&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>英语</span>
                             </a>
                         </li>
+                        <li class=''>
+                            <a href='taskctlr/submit.do?xk=computer&bj=${nowstu.classId}'>
+                                <i class='icon-caret-right'></i>
+                                <span>计算机</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li class='active'>
-                    <a href='classInfo.jsp'>
+                <li class=''>
+                    <a href='stuctlr/selectall.do'>
                         <i class='icon-star'></i>
                         <span>查看班级信息</span>
                     </a>
                 </li>
-
                 <li class=''>
                     <a href='calendar.jsp'>
                         <i class='icon-calendar'></i>
@@ -460,7 +396,7 @@
                                                                     Name
                                                                 </th>
                                                                 <th>
-                                                                    E-mail
+                                                                    Tel
                                                                 </th>
                                                                 <th>
                                                                     Status
@@ -469,360 +405,39 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <tr>
-                                                                <td>Lavern Oberbrunner</td>
-                                                                <td>antonette@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>America Champlin</td>
-                                                                <td>marques@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Stone Herman</td>
-                                                                <td>romaine@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Arjun Ernser</td>
-                                                                <td>estefania@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Marina Zemlak</td>
-                                                                <td>emmanuelle@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Jarvis Cummings</td>
-                                                                <td>amira@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-success'>Success</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Kip Bruen</td>
-                                                                <td>misty@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-success'>Success</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Mayra Kohler</td>
-                                                                <td>lizzie@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Jamey Ward</td>
-                                                                <td>marty@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Ken Beer</td>
-                                                                <td>lenny@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Celine Collier</td>
-                                                                <td>kristina@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Madaline Klocko</td>
-                                                                <td>rahsaan@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Golda Paucek</td>
-                                                                <td>dagmar@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-success'>Success</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Jevon Wisoky</td>
-                                                                <td>mara@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Yvonne King</td>
-                                                                <td>pearlie@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Uriel Brakus</td>
-                                                                <td>kyleigh@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Bennie Bernhard</td>
-                                                                <td>lexi@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Juanita Glover</td>
-                                                                <td>jasen@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-success'>Success</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Asha Reynolds</td>
-                                                                <td>van@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Donnell Bode</td>
-                                                                <td>jakob@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                            <tfoot>
-                                                            <tr>
-                                                                <th>Name</th>
-                                                                <th>E-mail</th>
-                                                                <th colspan='2'>Status</th>
-                                                            </tr>
-                                                            </tfoot>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+            <c:forEach items="${list1}" var="list1">
+            <tr>
+                <td>${list1.teacherName}</td>
+                <td>${list1.teacherTel}</td>
+                <td>
+                    <span class='label label-important'>Important</span>
+                </td>
+                <td>
+                    <div class='text-right'>
+                        <a class='btn btn-success btn-mini' href='#'>
+                            <i class='icon-ok'></i>
+                        </a>
+                        <a class='btn btn-danger btn-mini' href='#'>
+                            <i class='icon-remove'></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </c:forEach>
+     </tbody>
+                           <tfoot>
+                           <tr>
+                               <th>Name</th>
+                               <th>E-mail</th>
+                               <th colspan='2'>Status</th>
+                           </tr>
+                           </tfoot>
+                       </table>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
                                     <!--教师信息 end-->
 
 
@@ -849,367 +464,46 @@
                                                             <thead>
                                                             <tr>
                                                                 <th>
+                                                                    id
+                                                                </th>
+                                                                <th>
                                                                     Name
                                                                 </th>
                                                                 <th>
-                                                                    E-mail
-                                                                </th>
-                                                                <th>
-                                                                    Status
+                                                                    Class
                                                                 </th>
                                                                 <th></th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <tr>
-                                                                <td>Lavern Oberbrunner</td>
-                                                                <td>antonette@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>America Champlin</td>
-                                                                <td>marques@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Stone Herman</td>
-                                                                <td>romaine@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Arjun Ernser</td>
-                                                                <td>estefania@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Marina Zemlak</td>
-                                                                <td>emmanuelle@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Jarvis Cummings</td>
-                                                                <td>amira@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-success'>Success</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Kip Bruen</td>
-                                                                <td>misty@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-success'>Success</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Mayra Kohler</td>
-                                                                <td>lizzie@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Jamey Ward</td>
-                                                                <td>marty@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Ken Beer</td>
-                                                                <td>lenny@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Celine Collier</td>
-                                                                <td>kristina@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Madaline Klocko</td>
-                                                                <td>rahsaan@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Golda Paucek</td>
-                                                                <td>dagmar@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-success'>Success</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Jevon Wisoky</td>
-                                                                <td>mara@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Yvonne King</td>
-                                                                <td>pearlie@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Uriel Brakus</td>
-                                                                <td>kyleigh@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Bennie Bernhard</td>
-                                                                <td>lexi@gmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Juanita Glover</td>
-                                                                <td>jasen@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-success'>Success</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Asha Reynolds</td>
-                                                                <td>van@yahoo.com</td>
-                                                                <td>
-                                                                    <span class='label label-important'>Important</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Donnell Bode</td>
-                                                                <td>jakob@hotmail.com</td>
-                                                                <td>
-                                                                    <span class='label label-warning'>Warning</span>
-                                                                </td>
-                                                                <td>
-                                                                    <div class='text-right'>
-                                                                        <a class='btn btn-success btn-mini' href='#'>
-                                                                            <i class='icon-ok'></i>
-                                                                        </a>
-                                                                        <a class='btn btn-danger btn-mini' href='#'>
-                                                                            <i class='icon-remove'></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                            <tfoot>
-                                                            <tr>
-                                                                <th>Name</th>
-                                                                <th>E-mail</th>
-                                                                <th colspan='2'>Status</th>
-                                                            </tr>
-                                                            </tfoot>
-                                                        </table>
+          <c:forEach items="${list2}" var="list2">
+          <tr>
+              <td>${list2.studentId}</td>
+              <td>${list2.studentName}</td>
+              <td>
+                  ${list2.classId}
+              </td>
+              <td>
+                  <div class='text-right'>
+                      <a class='btn btn-success btn-mini' href='#'>
+                          <i class='icon-ok'></i>
+                      </a>
+                      <a class='btn btn-danger btn-mini' href='#'>
+                          <i class='icon-remove'></i>
+                      </a>
+                  </div>
+              </td>
+          </tr>
+            </c:forEach>                                               
+ </tbody>
+<tfoot>
+<tr>
+<th>Name</th>
+            <th>E-mail</th>
+            <th colspan='2'>Status</th>
+        </tr>
+        </tfoot>
+    </table>
                                                     </div>
                                                 </div>
                                             </div>

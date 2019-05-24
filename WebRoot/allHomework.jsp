@@ -1,8 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="zh">
+
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<base href="<%=basePath%>">
+
 <head>
-    <title>Flatty - Flat administration template</title>
+    <title>onlineSubmit</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
 
     <!--[if lt IE 9]>
@@ -71,7 +80,7 @@
             <div class='container-fluid'>
                 <a class='brand' href='index-stu.jsp'>
                     <i class='icon-heart-empty'></i>
-                    <span class='hidden-phone'>Flatty</span>
+                    <span class='hidden-phone'>onlineSubmit</span>
                 </a>
                 <a class='toggle-nav btn pull-left' href='#'>
                     <i class='icon-reorder'></i>
@@ -155,82 +164,9 @@
                     <li class='dropdown medium only-icon widget'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <i class='icon-rss'></i>
-                            <div class='label'>5</div>
+                            
                         </a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            John Doe signed up
-                                            <small class='muted'>just now</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #002
-                                            <small class='muted'>3 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            America Leannon commented Flatty with veeery long text.
-                                            <small class='muted'>1 hour ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            Jane Doe signed up
-                                            <small class='muted'>last week</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #001
-                                            <small class='muted'>1 year ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='widget-footer'>
-                                <a href='#'>所有消息</a>
-                            </li>
-                        </ul>
+                       
                     </li>
                     <!-- 消息提示栏 end -->
 
@@ -239,29 +175,17 @@
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23'/>
-                            <span class='user-name hidden-phone'>张希光</span>
+                            <span class='user-name hidden-phone'>${nowstu.studentName}</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
                             <li>
-                                <a href='user_profile.html'>
+                               <a href='stu_profile.jsp'>
                                     <i class='icon-user'></i>
                                     个人中心
                                 </a>
                             </li>
-                            <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-cog'></i>
-                                    设置
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='sign_in.html'>
-                                    <i class='icon-signout'></i>
-                                    安全退出
-                                </a>
-                            </li>
+                          
                         </ul>
                     </li>
                     <!-- 用户栏 end -->
@@ -269,15 +193,7 @@
                 <!-- 导航栏右侧 end -->
 
 
-                <!-- 导航栏搜索栏 start -->
-                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone"
-                      method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..."
-                       type="text" value=""/>
-                </form>
-                <!-- 导航栏搜索栏 end -->
+             
 
 
             </div>
@@ -291,7 +207,7 @@
 
             <div class='search'>
                 <!--不知道干啥的搜索框（暂时注掉） start-->
-                <form accept-charset="UTF-8" action="search_results.html" method="get"/>
+                <form accept-charset="UTF-8" action="search_results.html" method="get">
                 <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
                 <div class='search-wrapper'>
                     <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text"
@@ -304,40 +220,40 @@
 
 
             <!--左侧导航栏 start-->
-            <ul class='nav nav-stacked'>
-                <li class=''>
+              <ul class='nav nav-stacked'>
+                <li class='active'>
                     <a href='index-stu.jsp'>
                         <i class='icon-dashboard'></i>
                         <span>主页</span>
                     </a>
                 </li>
-                <li class='active'>
+                <li class=''>
                     <a class='dropdown-collapse' href='#'>
                         <i class='icon-edit'></i>
                         <span>查看所有作业</span>
                         <i class='icon-angle-down angle-down'></i>
                     </a>
-                    <ul class='in nav nav-stacked'>
-                        <li class='active'>
-                            <a href='allHomework.jsp'>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>             
+                            <a href='taskctlr/selectTask.do?xk=chinese&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>语文</span>
                             </a>
                         </li>
                         <li class=''>
-                            <a href='allHomework.jsp'>
+                            <a href='taskctlr/selectTask.do?xk=math&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>数学</span>
                             </a>
                         </li>
                         <li class=''>
-                            <a href='allHomework.jsp'>
+                            <a href='taskctlr/selectTask.do?xk=english&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>英语</span>
                             </a>
                         </li>
                         <li class=''>
-                            <a href='allHomework.jsp'>
+                            <a href='taskctlr/selectTask.do?xk=computer&bj=${nowstu.classId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>计算机</span>
                             </a>
@@ -350,17 +266,29 @@
                         <span>查看未交作业</span>
                         <i class='icon-angle-down angle-down'></i>
                     </a>
-                    <ul class='nav nav-stacked'>
+                   <ul class='nav nav-stacked'>
                         <li class=''>
-                            <a href='unSubmitWork.jsp'>
+                            <a href='taskctlr/unsubmit.do?xk=chinese&bj=${nowstu.classId}&xh=${nowstu.studentId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>语文</span>
                             </a>
                         </li>
                         <li class=''>
-                            <a href='unSubmitWork.jsp'>
+                            <a href='taskctlr/unsubmit.do?xk=math&bj=${nowstu.classId}&xh=${nowstu.studentId}'>
+                                <i class='icon-caret-right'></i>
+                                <span>数学</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='taskctlr/unsubmit.do?xk=english&bj=${nowstu.classId}&xh=${nowstu.studentId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>英语</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='taskctlr/unsubmit.do?xk=computer&bj=${nowstu.classId}&xh=${nowstu.studentId}'>
+                                <i class='icon-caret-right'></i>
+                                <span>计算机</span>
                             </a>
                         </li>
                     </ul>
@@ -373,26 +301,37 @@
                     </a>
                     <ul class='nav nav-stacked'>
                         <li class=''>
-                            <a href='submitWork.jsp'>
+                            <a href='taskctlr/submit.do?xk=chinese&bj=${nowstu.classId}&xh=${nowstu.studentId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>语文</span>
-                                < /a>
+                            </a>
                         </li>
                         <li class=''>
-                            <a href='submitWork.jsp'>
+                            <a href='taskctlr/submit.do?xk=math&bj=${nowstu.classId}&xh=${nowstu.studentId}'>
+                                <i class='icon-caret-right'></i>
+                                <span>数学</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='taskctlr/submit.do?xk=english&bj=${nowstu.classId}&xh=${nowstu.studentId}'>
                                 <i class='icon-caret-right'></i>
                                 <span>英语</span>
+                            </a>
+                        </li>
+                        <li class=''>
+                            <a href='taskctlr/submit.do?xk=computer&bj=${nowstu.classId}&xh=${nowstu.studentId}'>
+                                <i class='icon-caret-right'></i>
+                                <span>计算机</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class=''>
-                    <a href='classInfo.jsp'>
+                    <a href='stuctlr/selectall.do'>
                         <i class='icon-star'></i>
                         <span>查看班级信息</span>
                     </a>
                 </li>
-
                 <li class=''>
                     <a href='calendar.jsp'>
                         <i class='icon-calendar'></i>
@@ -438,7 +377,7 @@
                                 <!-- 作业结构树 start-->
                                 <hr class='hr-double'/>
                                 <div class='container'>
-                                    <table class="table table-condensed table-striped table-hover">
+                                   <table class="table table-condensed table-striped table-hover">
                                         <th>
                                             <%--<td>序号</td>--%>
                                         <td style="white-space:nowrap;font-size: 20px;color: red;">作业编号</td>
@@ -446,180 +385,56 @@
                                         <td style="white-space:nowrap;font-size: 20px;color: red;">发布时间</td>
                                         <td style="white-space:nowrap;font-size: 20px;color: red;">截止时间</td>
                                         <td style="white-space:nowrap;font-size: 20px;color: red;">作业详情</td>
-                                        <td style="white-space:nowrap;font-size: 20px;color: red;">提交状态</td>
+                                        <td style="white-space:nowrap;font-size: 20px;color: red;">下载</td>
                                         </th>
-                                        <tr>
-                                            <td></td>
-                                            <td>1</td>
-                                            <td>语文</td>
-                                            <td>2019-04-30</td>
-                                            <td>2019-05-10</td>
-                                            <td>
-                                                抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄
-                                            </td>
-                                            <td><i class="icon-remove"></i><i class="icon-ok"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>1</td>
-                                            <td>语文</td>
-                                            <td>2019-04-30</td>
-                                            <td>2019-05-10</td>
-                                            <td>
-                                                抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄
-                                            </td>
-                                            <td><i class="icon-remove"></i><i class="icon-ok"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>1</td>
-                                            <td>语文</td>
-                                            <td>2019-04-30</td>
-                                            <td>2019-05-10</td>
-                                            <td>
-                                                抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄
-                                            </td>
-                                            <td><i class="icon-remove"></i><i class="icon-ok"></i></td>
-                                        </tr>
+         <c:forEach items="${list}" var="list">  
+         <tr>
+         	 <td></td>
+             <td>${list.taskId}</td>
+             
+             <c:if test="${list.courseId =='math'}">
+             <td>数学</td>
+             </c:if>              
+             
+             <c:if test="${list.courseId =='chinese'}">
+             <td>语文</td>
+             </c:if> 
+             
+             <c:if test="${list.courseId =='english'}">
+             <td>英语</td>
+             </c:if> 
+             
+             <c:if test="${list.courseId =='computer'}">
+             <td>计算机</td>
+             </c:if> 
+             
+             <td>${list.taskRelease}</td>
+             <td>${list.taskAbort}</td>
+             <td>
+                ${list.taskDesc}
+             </td>
+            
+             <c:if test="${empty list.fileName }">
+              <td>
+              		无
+              </td>
+             </c:if>
+             <c:if test="${not empty list.fileName }">
+              <td>
+              	<a href="stuctlr/download.do?filename=${list.fileName}">下载附件</a>
+              </td>
+             </c:if>
+             
+         </tr>
+                                        </c:forEach>
+
                                     </table>
                                 </div>
                                 <!-- 作业清单 end-->
 
-                                <!--作业提交 end -->
-                                <div class="container">
-                                    <div class='alert alert-info'>
-                                        <a class='close' data-dismiss='alert' href='#'>&times;</a>
-                                        <strong>Hello!</strong>
-                                        你可在在下面选择你要上传的作业！
-                                        <strong>让我们开始吧!</strong>
-                                    </div>
-                                    <div class='row-fluid'>
-                                        <div class='span12 box'>
-                                            <div class='box-header'>
-                                                <div class='title'>
-                                                    <i class='icon-file'></i>
-                                                   开始上传作业
-                                                </div>
-                                                <div class='actions'>
-                                                    <a href="#" class="btn box-remove btn-mini btn-link"><i
-                                                            class='icon-remove'></i>
-                                                    </a>
-                                                    <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class='box-content'>
-                                                <form action='//jquery-file-upload.appspot.com/'
-                                                      enctype='multipart/form-data'
-                                                      id='fileupload' method='POST'/>
-                                                <div class='row-fluid fileupload-buttonbar'>
-                                                    <div class='span7'>
-                                                <span class='btn btn-success fileinput-button'>
-                                                  <i class='icon-plus icon-white'></i>
-                                                  <span>添加文件...</span>
-                                                  <input data-bfi-disabled='' multiple='' name='files[]' type='file'/>
-                                                </span>
-                                                        <button class='btn btn-primary start' type='submit'>
-                                                            <i class='icon-upload icon-white'></i>
-                                                            <span>开始上传</span>
-                                                        </button>
-                                                        <button class='btn btn-warning cancel' type='reset'>
-                                                            <i class='icon-ban-circle icon-white'></i>
-                                                            <span>取消上传</span>
-                                                        </button>
-                                                        <button class='btn btn-danger delete' type='button'>
-                                                            <i class='icon-trash icon-white'></i>
-                                                            <span>删除</span>
-                                                        </button>
-                                                        <input class='toggle' type='checkbox'/>
-                                                    </div>
-                                                    <div class='span5 fileupload-progress fade'>
-                                                        <div aria-valuemax='100' aria-valuemin='0'
-                                                             class='progress progress-success progress-striped active'
-                                                             role='progressbar'>
-                                                            <div class='bar' style='width:0%;'></div>
-                                                        </div>
-                                                        <div class='progress-extended'></div>
-                                                    </div>
-                                                </div>
-                                                <div class='fileupload-loading'></div>
-                                                <br/>
-                                                <table class='table table-striped' role='presentation'>
-                                                    <tbody class='files' data-target='#modal-gallery'
-                                                           data-toggle='modal-gallery'></tbody>
-                                                </table>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <script id="template-upload" type="text/x-tmpl">
-                                {% for (var i=0, file; file=o.files[i]; i++) { %}
-                                <tr class="template-upload fade">
-                                    <td class="preview"><span class="fade"></span></td>
-                                    <td class="name"><span>{%=file.name%}</span></td>
-                                    <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-                                    {% if (file.error) { %}
-                                    <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
-                                    {% } else if (o.files.valid && !i) { %}
-                                    <td>
-                                        <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>
-                                    </td>
-                                    <td>{% if (!o.options.autoUpload) { %}
-                                        <button class="btn btn-primary start">
-                                            <i class="icon-upload icon-white"></i>
-                                            <span>Start</span>
-                                        </button>
-                                        {% } %}</td>
-                                    {% } else { %}
-                                    <td colspan="2"></td>
-                                    {% } %}
-                                    <td>{% if (!i) { %}
-                                        <button class="btn btn-warning cancel">
-                                            <i class="icon-ban-circle icon-white"></i>
-                                            <span>Cancel</span>
-                                        </button>
-                                        {% } %}</td>
-                                </tr>
-                                {% } %}
+                               
 
-
-                                </script>
-                                    <!-- The template to display files available for download -->
-                                    <script id="template-download" type="text/x-tmpl">
-                                {% for (var i=0, file; file=o.files[i]; i++) { %}
-                                <tr class="template-download fade">
-                                    {% if (file.error) { %}
-                                    <td></td>
-                                    <td class="name"><span>{%=file.name%}</span></td>
-                                    <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-                                    <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
-                                    {% } else { %}
-                                    <td class="preview">{% if (file.thumbnail_url) { %}
-                                        <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
-                                        {% } %}</td>
-                                    <td class="name">
-                                        <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
-                                    </td>
-                                    <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-                                    <td colspan="2"></td>
-                                    {% } %}
-                                    <td>
-                                        <button class="btn btn-danger delete" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
-                                        <i class="icon-trash icon-white"></i>
-                                        <span>Delete</span>
-                                        </button>
-                                        <input type="checkbox" name="delete" value="1" class="toggle">
-                                    </td>
-                                </tr>
-                                {% } %}
-
-
-                                </script>
-                                </div>
-                                <!--作业提交 end -->
-
-
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

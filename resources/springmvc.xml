@@ -9,31 +9,54 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
 
-	<context:component-scan base-package="edu.challenge.controller"></context:component-scan>
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan
+		base-package="edu.challenge.controller"></context:component-scan>
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+	<mvc:annotation-driven>
+		<mvc:message-converters
+			register-defaults="false">
+			<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+			<bean id="fastJsonHttpMessageConverter"
+				class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		id="internalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView"></property>
 		<property name="prefix" value="/WEB-INF/"></property>
 		<property name="suffix" value=".jsp"></property>
 		<property name="order" value="1"></property>
 	</bean>
-	
-	
-	<mvc:interceptors>
+
+
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"></mvc:mapping>
-			<mvc:exclude-mapping path="/loginctlr/login.do"></mvc:exclude-mapping>
+			<mvc:exclude-mapping path="/adminctlr/login*.do"></mvc:exclude-mapping>
+			<mvc:exclude-mapping path="/stuctlr/login*.do"></mvc:exclude-mapping>
 			<bean class="edu.challenge.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
-	
-	
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</mvc:interceptors> -->
+
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"></property>
 		<property name="maxUploadSize" value="5120000"></property><!-- 单位默认是字节b -->
 		<property name="resolveLazily" value="true"></property>
 	</bean>
-	
-	<bean id="globalException" class="edu.challenge.exception.GlobalException"></bean>
+
+	<bean id="globalException"
+		class="edu.challenge.exception.GlobalException"></bean>
 </beans>

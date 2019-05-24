@@ -1,8 +1,12 @@
+<%@page import="edu.challenge.entity.TbTask"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>Flatty - Flat administration template</title>
+    <title>onlineSubmit Teacher</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
 
     <!--[if lt IE 9]>
@@ -71,7 +75,7 @@
             <div class='container-fluid'>
                 <a class='brand' href='index-stu.jsp'>
                     <i class='icon-heart-empty'></i>
-                    <span class='hidden-phone'>Flatty</span>
+                    <span class='hidden-phone'>onlineSubmit</span>
                 </a>
                 <a class='toggle-nav btn pull-left' href='#'>
                     <i class='icon-reorder'></i>
@@ -98,55 +102,7 @@
                                     Dark blue
                                 </a>
                             </li>
-                            <li class='divider'></li>
-                            <li class='color-settings-contrast-color'>
-                                <div class='color-title'>Contrast color</div>
-                                <a href="#" data-change-to="contrast-red"><i class='icon-adjust text-red'></i>
-                                    Red
-                                    <small>(default)</small>
-                                </a>
-                                <a href="#" data-change-to="contrast-blue"><i class='icon-adjust text-blue'></i>
-                                    Blue
-                                </a>
-                                <a href="#" data-change-to="contrast-orange"><i class='icon-adjust text-orange'></i>
-                                    Orange
-                                </a>
-                                <a href="#" data-change-to="contrast-purple"><i class='icon-adjust text-purple'></i>
-                                    Purple
-                                </a>
-                                <a href="#" data-change-to="contrast-green"><i class='icon-adjust text-green'></i>
-                                    Green
-                                </a>
-                                <a href="#" data-change-to="contrast-muted"><i class='icon-adjust text-muted'></i>
-                                    Muted
-                                </a>
-                                <a href="#" data-change-to="contrast-fb"><i class='icon-adjust text-fb'></i>
-                                    Facebook
-                                </a>
-                                <a href="#" data-change-to="contrast-dark"><i class='icon-adjust text-dark'></i>
-                                    Dark
-                                </a>
-                                <a href="#" data-change-to="contrast-pink"><i class='icon-adjust text-pink'></i>
-                                    Pink
-                                </a>
-                                <a href="#" data-change-to="contrast-grass-green"><i
-                                        class='icon-adjust text-grass-green'></i>
-                                    Grass green
-                                </a>
-                                <a href="#" data-change-to="contrast-sea-blue"><i class='icon-adjust text-sea-blue'></i>
-                                    Sea blue
-                                </a>
-                                <a href="#" data-change-to="contrast-banana"><i class='icon-adjust text-banana'></i>
-                                    Banana
-                                </a>
-                                <a href="#" data-change-to="contrast-dark-orange"><i
-                                        class='icon-adjust text-dark-orange'></i>
-                                    Dark orange
-                                </a>
-                                <a href="#" data-change-to="contrast-brown"><i class='icon-adjust text-brown'></i>
-                                    Brown
-                                </a>
-                            </li>
+                           
                         </ul>
                     </li>
                     <!-- ui设置 end -->
@@ -155,82 +111,7 @@
                     <li class='dropdown medium only-icon widget'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <i class='icon-rss'></i>
-                            <div class='label'>5</div>
                         </a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            John Doe signed up
-                                            <small class='muted'>just now</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #002
-                                            <small class='muted'>3 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            America Leannon commented Flatty with veeery long text.
-                                            <small class='muted'>1 hour ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            Jane Doe signed up
-                                            <small class='muted'>last week</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #001
-                                            <small class='muted'>1 year ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='widget-footer'>
-                                <a href='#'>所有消息</a>
-                            </li>
-                        </ul>
                     </li>
                     <!-- 消息提示栏 end -->
 
@@ -239,27 +120,19 @@
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23'/>
-                            <span class='user-name hidden-phone'>张希光</span>
+                            <span class='user-name hidden-phone'>${nowteacher.teacherName }</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
                             <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-user'></i>
-                                    个人中心
-                                </a>
-                            </li>
-                            <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-cog'></i>
-                                    设置
+                                <a href='teacherctlr/person.do?techerId=${nowteacher.teacherId }'>
+                                    <i class='icon-user'></i>个人中心
                                 </a>
                             </li>
                             <li class='divider'></li>
                             <li>
-                                <a href='sign_in.html'>
-                                    <i class='icon-signout'></i>
-                                    安全退出
+                                <a href='login.jsp'>
+                                    <i class='icon-signout'></i>安全退出
                                 </a>
                             </li>
                         </ul>
@@ -267,19 +140,6 @@
                     <!-- 用户栏 end -->
                 </ul>
                 <!-- 导航栏右侧 end -->
-
-
-                <!-- 导航栏搜索栏 start -->
-                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone"
-                      method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..."
-                       type="text" value=""/>
-                </form>
-                <!-- 导航栏搜索栏 end -->
-
-
             </div>
         </div>
     </div>
@@ -288,119 +148,43 @@
     <div id='main-nav-bg'></div>
     <nav class='' id='main-nav'>
         <div class='navigation'>
-
-            <div class='search'>
-                <!--不知道干啥的搜索框（暂时注掉） start-->
-                <form accept-charset="UTF-8" action="search_results.html" method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <div class='search-wrapper'>
-                    <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text"
-                           value=""/>
-                    <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                </div>
-                </form>
-                <!--不知道干啥的搜索框（暂时注掉） end-->
-            </div>
-
-
             <!--左侧导航栏 start-->
             <ul class='nav nav-stacked'>
-                <li class=''>
+                <li class='active'>
                     <a href='index-teacher.jsp'>
                         <i class='icon-dashboard'></i>
                         <span>主页</span>
                     </a>
                 </li>
                 <li class=''>
-                    <a class='dropdown-collapse' href='#'>
+                    <a class='dropdown-collapse'>
                         <i class='icon-edit'></i>
                         <span>查看所有作业</span>
                         <i class='icon-angle-down angle-down'></i>
                     </a>
                     <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>数学</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a class='dropdown-collapse' href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>英语</span>
-                            </a>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>计算机</span>
-                            </a>
-                        </li>
+                    	<c:forEach items="${courseClass }" var="cc">
+                    		<li>
+	                            <a class='dropdown-collapse'>
+	                                <i class='icon-caret-right'></i>
+	                                <span>${cc.course.courseName }</span>
+	                                <i class='icon-angle-down angle-down'></i>
+	                            </a>
+	                            <ul class='nav nav-stacked'>
+	                                <c:forEach items="${cc.classes }" var="cla">
+	                                	<li>
+		                                    <a href='teacherctlr/listTasks.do?classId=${cla.classId }'>
+		                                        <i class='icon-caret-right'></i>
+		                                        <span>${cc.course.classDepa }${cc.course.classMajor }${cla.classNum }</span>
+		                                    </a>
+	                               	 	</li>
+	                                </c:forEach>
+	                            </ul>
+                       	 </li>	
+                    	</c:forEach>
                     </ul>
                 </li>
 
-                <li class=''>
-                    <a class='dropdown-collapse ' href='#'>
-                        <i class='icon-tint'></i>
-                        <span>查看已交作业</span>
-                        <i class='icon-angle-down angle-down'></i>
-                    </a>
-                    <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
                 <li class=''>
                     <a href='classInfo-teacher.jsp'>
                         <i class='icon-star'></i>
@@ -415,13 +199,12 @@
                     </a>
                 </li>
 
-                <li class='active'>
-                    <a href='addNewNotice.jsp'>
+                <li class=''>
+                    <a href='teacherctlr/listTasks.do?classId=-1'>
                         <i class='icon-calendar'></i>
                         <span>公告栏管理</span>
                     </a>
                 </li>
-
 
             </ul>
             <!--左侧导航栏 end-->
@@ -461,7 +244,7 @@
                     <div class='alert alert-info'>
                         <a class='close' data-dismiss='alert' href='#'>&times;</a>
                         你好!尊敬的:
-                        <strong>张希光老师</strong>
+                        <strong>${nowteacher.teacherName }老师</strong>
                         ,当前公告栏所有内容如下，您可以对其进行<strong>增加，修改，删除</strong>操作，请您务必注意
                         <i class=" icon-exclamation"></i><i class=" icon-exclamation"></i><i
                             class=" icon-exclamation"></i>
@@ -474,7 +257,7 @@
                                     <div class='box-content box-no-padding'>
                                         <div class='sortable-container'>
                                             <form accept-charset="UTF-8" action="#" class="new-todo"
-                                                  method="post"/>
+                                                  method="post">
                                             <div style="margin:0;padding:0;display:inline"><input
                                                     name="utf8" type="hidden" value="&#x2713;"/><input
                                                     name="authenticity_token" type="hidden"
@@ -487,380 +270,64 @@
                                             </button>
                                             </form>
 
-                                            <div class='date text-contrast'>今天</div>
+                                            <div class='date text-contrast'>公告列表</div>
                                             <ul class='unstyled sortable' data-sortable-axis='y'
                                                 data-sortable-connect='.sortable'>
-
-                                                <li class='important item'>
+                                                <%
+                                            	  	int index = 0;
+                                                 %>
+												<c:forEach items="${totalTasks }" var="t">
+												
+													<li class='important item'>
                                                     <label class='check pull-left todo'>
                                                         <input type='checkbox'/>
-                                                        test1111
+                                                        <%
+                                                        	ArrayList<TbTask> tasks = (ArrayList)(session.getAttribute("totalTasks"));
+                                                        	if(tasks != null && tasks.size() > 0){
+                                                        		String desc = tasks.get(index++).getTaskDesc(); 
+	                                                        	if(desc.length() > 50){
+		                                                        	out.println(desc.substring(0, 15) + "...");
+	                                                        	}else{
+	                                                        		out.println(desc);
+	                                                        	}
+                                                        	} 
+                                                        
+                                                         %>
                                                     </label>
-                                                    <div class='actions pull-right'>
+                                                    <div class='actions pull-right' style="margin-left: 60px;">
                                                         <a class='btn btn-link edit has-tooltip'
-                                                           data-toggle='modal' href='#modal-example'
+                                                            href='teacherctlr/selectTask.do?taskId=${t.taskId }'
                                                            data-placement='top' title='点击查看公告详情'>
                                                             <i class='icon-folder-open-alt showModal'></i>
                                                         </a>
-                                                        <a class='btn btn-link edit has-tooltip editNotice'
+                                                        <%-- <a class='btn btn-link edit has-tooltip'
                                                            data-placement='top' href='#' title='Edit todo'>
                                                             <i class='icon-pencil'></i>
                                                         </a>
                                                         <a class='btn btn-link remove has-tooltip'
-                                                           data-placement='top' href='#'
+                                                           data-placement='top' href='teacherctlr/deleteTask.do?TaskId=${t.taskId }'
                                                            title='Remove todo'>
                                                             <i class='icon-remove'></i>
-                                                        </a>
+                                                        </a> --%>
                                                         <a class='btn btn-link important has-tooltip'
                                                            data-placement='top' href='#'
                                                            title='Mark as important'>
                                                             <i class='icon-bookmark-empty'></i>
                                                         </a>
+                                                        
+                                                        <div data-placement='top' class='btn btn-link timedate has-tooltip'>
+                                                    		<span><fmt:formatDate value="${t.taskRelease }" pattern="yyyy-MM-dd hh:mm:ss"/></span>
+                                                   		 </div>
+                                                    
                                                     </div>
+                                                  
                                                 </li>
-
-                                                <li class='important item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        test1111
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-toggle='modal' href='#modal-example'
-                                                           data-placement='top' title='点击查看公告详情'>
-                                                            <i class='icon-folder-open-alt showModal'></i>
-                                                        </a>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-placement='top' href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-
-                                                <li class='important item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        test1111
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-toggle='modal' href='#modal-example'
-                                                           data-placement='top' title='点击查看公告详情'>
-                                                            <i class='icon-folder-open-alt showModal'></i>
-                                                        </a>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-placement='top' href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-
-
-                                            </ul>
-                                            <div class='date text-contrast'>Due Wed, Sep 19, 2013</div>
-                                            <ul class='unstyled sortable' data-sortable-axis='y'
-                                                data-sortable-connect='.sortable'>
-
-                                                <li class='important item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        test1111
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-toggle='modal' href='#modal-example'
-                                                           data-placement='top' title='点击查看公告详情'>
-                                                            <i class='icon-folder-open-alt showModal'></i>
-                                                        </a>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-placement='top' href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-
-                                                <li class='important item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        test1111
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-toggle='modal' href='#modal-example'
-                                                           data-placement='top' title='点击查看公告详情'>
-                                                            <i class='icon-folder-open-alt showModal'></i>
-                                                        </a>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-placement='top' href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-
-                                                <li class='important item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        test1111
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-toggle='modal' href='#modal-example'
-                                                           data-placement='top' title='点击查看公告详情'>
-                                                            <i class='icon-folder-open-alt showModal'></i>
-                                                        </a>
-                                                        <a class='btn btn-link edit has-tooltip'
-                                                           data-placement='top' href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#'
-                                                           title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-
-
+												</c:forEach>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!--公告详情模态框 start-->
-                                <%--<div class='text-center'>--%>
-
-                                    <%--<a class='btn btn-success btn-large' data-toggle='modal' href='#modal-example'--%>
-                                       <%--role='button' style='margin-bottom: 5px'>Launch big modal</a>--%>
-                                <%--</div>--%>
-                                <div class='modal hide fade' id='modal-example' role='dialog' tabindex='-1'>
-                                    <div class='modal-header'>
-                                        <button class='close' data-dismiss='modal' type='button'>&times;</button>
-                                        <h3>公告详情</h3>
-                                    </div>
-                                    <div class='modal-body'>
-                                        <h4>公告标题</h4>
-                                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia
-                                            odio sem.</p>
-                                        <!--  -->
-                                        <h4>公告发布人:</h4>
-                                        <p>XXX</p>
-                                        <h4>公告发布时间:</h4>
-                                        <p>XXX</p>
-                                        <h4>公告发布关联作业:</h4>
-                                        <p>XXX</p>
-                                        <h4>公告内容:</h4>
-                                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-                                            facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                                            vestibulum at eros.</p>
-                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus
-                                            sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna,
-                                            vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper
-                                            nulla non metus auctor fringilla.</p>
-                                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-                                            facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                                            vestibulum at eros.</p>
-                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus
-                                            sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna,
-                                            vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper
-                                            nulla non metus auctor fringilla.</p>
-                                    </div>
-                                    <div class='modal-footer'>
-                                        <button class='btn' data-dismiss='modal'>Close</button>
-                                        <button class='btn btn-primary'>Save changes</button>
-                                    </div>
-                                </div>
-                                <!--公告详情模态框 end-->
-
-                                <!--公告编辑模态框 start-->
-                                <%--<div class='text-center'>--%>
-
-                                    <%--<a class='btn btn-success btn-large' data-toggle='modal' href='#modal-example'--%>
-                                       <%--role='button' style='margin-bottom: 5px'>Launch big modal</a>--%>
-                                <%--</div>--%>
-                                <div class='modal hide fade' id='edit-modal' role='dialog' tabindex='-1'>
-                                    <div class='span12 box'>
-                                        <div class='box-header blue-background'>
-                                            <div class='title'>
-                                                <div class='icon-edit'></div>
-                                                公告编辑
-                                            </div>
-                                            <div class='actions'>
-                                                <a href="#" class="btn box-remove btn-mini btn-link"><i
-                                                        class='icon-remove'></i>
-                                                </a>
-                                                <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class='box-content'>
-                                            <form accept-charset="UTF-8" action="#" class="form form-horizontal"
-                                                  method="post"
-                                                  style="margin-bottom: 0;"/>
-                                            <div style="margin:0;padding:0;display:inline"><input name="utf8"
-                                                                                                  type="hidden"
-                                                                                                  value="&#x2713;"/><input
-                                                    name="authenticity_token" type="hidden"
-                                                    value="CFC7d00LWKQsSahRqsfD+e/mHLqbaVIXBvlBGe/KP+I="/></div>
-                                            <div class='control-group'>
-                                                <label class='control-label' for='notice-title'>公告标题:</label>
-                                                <div class='controls'>
-                                                    <input id='notice-title' placeholder='公告标题' type='text'/>
-                                                </div>
-                                            </div>
-
-                                            <hr class='hr-normal'/>
-                                            <div class='control-group'>
-                                                <label class='control-label' for='notice-teacher'>公告发布人:</label>
-                                                <div class='controls'>
-                                                    <input class='input-xlarge' disabled='' id='notice-teacher'
-                                                           placeholder='公告发布人' type='text'/>
-                                                </div>
-                                            </div>
-
-                                            <hr class='hr-normal'/>
-                                            <div class='control-group'>
-                                                <label class='control-label' for='inputSelectMulti'>公告关联作业:</label>
-                                                <div class='controls'>
-                                                    <select id='inputSelectMulti' multiple='multiple'>
-                                                        <option/>
-                                                        1
-                                                        <option/>
-                                                        2
-                                                        <option/>
-                                                        3
-                                                        <option/>
-                                                        4
-                                                        <option/>
-                                                        5
-                                                    </select>
-                                                    <span class='help-inline'>温馨提示：仅能关联自己发布的作业任务哦！</span>
-                                                </div>
-                                            </div>
-
-                                            <hr class='hr-normal'/>
-                                            <div class='control-group'>
-                                                <label class='control-label' for='notice-content'>公告内容:</label>
-                                                <div class='controls'>
-                                                    <textarea id='notice-content' placeholder='公告内容'
-                                                              rows='3'></textarea>
-                                                </div>
-                                            </div>
-
-                                            <hr class='hr-normal'/>
-                                            <div class='control-group'>
-                                                <label class='control-label' for='chooseTime'>公告内容:</label>
-                                                <div class='controls'>
-                                                    <div id="chooseTime" class='box-content'>
-
-                                                        <div class='row-fluid'>
-                                                            <strong>截止日期</strong>
-                                                            <div>
-                                                                <div class='datepicker input-append'
-                                                                     id='datepicker'>
-                                                                    <input class='input-medium'
-                                                                           data-format='yyyy-MM-dd'
-                                                                           placeholder='选择截止日期'
-                                                                           type='text'/>
-                                                                    <span class='add-on'>
-                                                                        <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
-                                                                        </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <hr class='hr-normal'/>
-                                                        <div class='row-fluid'>
-                                                            <strong>截止时间</strong>
-                                                            <div>
-                                                                <div class='timepicker input-append'
-                                                                     id='timepicker'>
-                                                                    <input class='input-medium'
-                                                                           data-format='hh:mm:ss'
-                                                                           placeholder='选择截止时间'
-                                                                           type='text'/>
-                                                                    <span class='add-on'>
-                                                                          <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
-                                                                        </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-
-
-
-
-
-
-                                            <hr class='hr-normal'/>
-                                            <div class='form-actions'>
-                                                <button class='btn btn-primary' type='submit'>
-                                                    <i class='icon-save'></i>
-                                                    Save
-                                                </button>
-                                                <button class='btn' type='submit'>Cancel</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--公告编辑模态框 end-->
-
-
-                                <!--正文内容填充区 end-->
                             </div>
                         </div>
                     </div>

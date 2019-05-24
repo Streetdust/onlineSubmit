@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.challenge.mapper.TbClassesMapper" >
+  <resultMap id="BaseResultMap" type="edu.challenge.entity.TbClasses" >
+    <constructor >
+      <idArg column="class_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="class_num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="class_depa" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="class_major" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    class_id, class_num, class_depa, class_major
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.challenge.entity.TbClassesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tb_classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <select id="selectByPage" resultMap="BaseResultMap" parameterType="edu.challenge.entity.TbClassesExample" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_classes
+   <if test="page!=null and count!=null">
+			limit #{page},#{count}
+		</if>
+   
+  </select>
+  
+  <select id="selectAllClassInfo" resultMap="BaseResultMap" parameterType="edu.challenge.entity.TbClassesExample" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_classes
+   <if test="depa!=null and major!=null">
+		where class_depa=#{depa,jdbcType=VARCHAR} and class_major=#{major,jdbcType=VARCHAR}
+		</if>
+   
+  </select>
+  
+  <select id="searchClassIdInfo" resultMap="BaseResultMap" parameterType="edu.challenge.entity.TbClassesExample" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_classes
+  	where class_depa=#{depa,jdbcType=VARCHAR} and class_major=#{major,jdbcType=VARCHAR}  and class_num=#{classname,jdbcType=VARCHAR}
+
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_classes
+    where class_id = #{classId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_classes
+    where class_id = #{classId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="edu.challenge.entity.TbClassesExample" >
+    delete from tb_classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="edu.challenge.entity.TbClasses" >
+    insert into tb_classes (class_id, class_num, class_depa, 
+      class_major)
+    values (#{classId,jdbcType=INTEGER}, #{classNum,jdbcType=VARCHAR}, #{classDepa,jdbcType=VARCHAR}, 
+      #{classMajor,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertNoClassId" parameterType="edu.challenge.entity.TbClasses" >
+    insert into tb_classes (class_num, class_depa, 
+      class_major)
+    values (#{className,jdbcType=VARCHAR}, #{depa,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <insert id="insertSelective" parameterType="edu.challenge.entity.TbClasses" >
+    insert into tb_classes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="classNum != null" >
+        class_num,
+      </if>
+      <if test="classDepa != null" >
+        class_depa,
+      </if>
+      <if test="classMajor != null" >
+        class_major,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="classNum != null" >
+        #{classNum,jdbcType=VARCHAR},
+      </if>
+      <if test="classDepa != null" >
+        #{classDepa,jdbcType=VARCHAR},
+      </if>
+      <if test="classMajor != null" >
+        #{classMajor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="edu.challenge.entity.TbClassesExample" resultType="java.lang.Integer" >
+    select count(*) from tb_classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_classes
+    <set >
+      <if test="record.classId != null" >
+        class_id = #{record.classId,jdbcType=INTEGER},
+      </if>
+      <if test="record.classNum != null" >
+        class_num = #{record.classNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classDepa != null" >
+        class_depa = #{record.classDepa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classMajor != null" >
+        class_major = #{record.classMajor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_classes
+    set class_id = #{record.classId,jdbcType=INTEGER},
+      class_num = #{record.classNum,jdbcType=VARCHAR},
+      class_depa = #{record.classDepa,jdbcType=VARCHAR},
+      class_major = #{record.classMajor,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.challenge.entity.TbClasses" >
+    update tb_classes
+    <set >
+      <if test="classNum != null" >
+        class_num = #{classNum,jdbcType=VARCHAR},
+      </if>
+      <if test="classDepa != null" >
+        class_depa = #{classDepa,jdbcType=VARCHAR},
+      </if>
+      <if test="classMajor != null" >
+        class_major = #{classMajor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where class_id = #{classId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.challenge.entity.TbClasses" >
+    update tb_classes
+    set class_num = #{classNum,jdbcType=VARCHAR},
+      class_depa = #{classDepa,jdbcType=VARCHAR},
+      class_major = #{classMajor,jdbcType=VARCHAR}
+    where class_id = #{classId,jdbcType=INTEGER}
+  </update>
+</mapper>

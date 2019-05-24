@@ -1,8 +1,12 @@
+<%@page import="edu.challenge.entity.TbTask"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>Flatty - Flat administration template</title>
+    <title>onlineSubmit Teacher</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
 
     <!--[if lt IE 9]>
@@ -71,7 +75,7 @@
             <div class='container-fluid'>
                 <a class='brand' href='index-stu.jsp'>
                     <i class='icon-heart-empty'></i>
-                    <span class='hidden-phone'>Flatty</span>
+                    <span class='hidden-phone'>onlineSubmit</span>
                 </a>
                 <a class='toggle-nav btn pull-left' href='#'>
                     <i class='icon-reorder'></i>
@@ -91,12 +95,7 @@
                                     Light
                                     <small>(default)</small>
                                 </a>
-                                <a data-change-to='assets/stylesheets/dark-theme.css' href='#'>
-                                    Dark
-                                </a>
-                                <a data-change-to='assets/stylesheets/dark-blue-theme.css' href='#'>
-                                    Dark blue
-                                </a>
+                               
                             </li>
                             <li class='divider'></li>
                             <li class='color-settings-contrast-color'>
@@ -155,78 +154,8 @@
                     <li class='dropdown medium only-icon widget'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <i class='icon-rss'></i>
-                            <div class='label'>5</div>
                         </a>
                         <ul class='dropdown-menu'>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            John Doe signed up
-                                            <small class='muted'>just now</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #002
-                                            <small class='muted'>3 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            America Leannon commented Flatty with veeery long text.
-                                            <small class='muted'>1 hour ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            Jane Doe signed up
-                                            <small class='muted'>last week</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #001
-                                            <small class='muted'>1 year ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
                             <li class='widget-footer'>
                                 <a href='#'>所有消息</a>
                             </li>
@@ -239,7 +168,7 @@
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23'/>
-                            <span class='user-name hidden-phone'>张希光</span>
+                            <span class='user-name hidden-phone'>${nowteacher.teacherName }</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
@@ -269,17 +198,6 @@
                 <!-- 导航栏右侧 end -->
 
 
-                <!-- 导航栏搜索栏 start -->
-                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone"
-                      method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..."
-                       type="text" value=""/>
-                </form>
-                <!-- 导航栏搜索栏 end -->
-
-
             </div>
         </div>
     </div>
@@ -288,117 +206,41 @@
     <div id='main-nav-bg'></div>
     <nav class='' id='main-nav'>
         <div class='navigation'>
-
-            <div class='search'>
-                <!--不知道干啥的搜索框（暂时注掉） start-->
-                <form accept-charset="UTF-8" action="search_results.html" method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <div class='search-wrapper'>
-                    <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text"
-                           value=""/>
-                    <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                </div>
-                </form>
-                <!--不知道干啥的搜索框（暂时注掉） end-->
-            </div>
-
-
             <!--左侧导航栏 start-->
             <ul class='nav nav-stacked'>
-                <li class=''>
+                <li class='active'>
                     <a href='index-teacher.jsp'>
                         <i class='icon-dashboard'></i>
                         <span>主页</span>
                     </a>
                 </li>
-                <li class='active'>
-                    <a class='dropdown-collapse' href='#'>
+                <li class=''>
+                    <a class='dropdown-collapse'>
                         <i class='icon-edit'></i>
                         <span>查看所有作业</span>
                         <i class='icon-angle-down angle-down'></i>
                     </a>
-                    <ul class='in nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='in nav nav-stacked'>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>数学</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a class='dropdown-collapse' href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>英语</span>
-                            </a>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>计算机</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class=''>
-                    <a class='dropdown-collapse ' href='#'>
-                        <i class='icon-tint'></i>
-                        <span>查看已交作业</span>
-                        <i class='icon-angle-down angle-down'></i>
-                    </a>
                     <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    	<c:forEach items="${courseClass }" var="cc">
+                    		<li>
+	                            <a class='dropdown-collapse'>
+	                                <i class='icon-caret-right'></i>
+	                                <span>${cc.course.courseName }</span>
+	                                <i class='icon-angle-down angle-down'></i>
+	                            </a>
+	                            <ul class='nav nav-stacked'>
+	                                <c:forEach items="${cc.classes }" var="cla">
+	                                	<li>
+		                                    <a href='teacherctlr/listTasks.do?classId=${cla.classId }'>
+		                                        <i class='icon-caret-right'></i>
+		                                        <span>${cc.course.classDepa }${cc.course.classMajor }${cla.classNum }</span>
+		                                    </a>
+	                               	 	</li>
+	                                </c:forEach>
+	                            </ul>
+                       	 </li>	
+                    	</c:forEach>
+                        
                     </ul>
                 </li>
                 <li class=''>
@@ -416,12 +258,11 @@
                 </li>
 
                 <li class=''>
-                    <a href='addNewNotice.jsp'>
+                    <a href='teacherctlr/listTasks.do?classId=-1'>
                         <i class='icon-calendar'></i>
                         <span>公告栏管理</span>
                     </a>
                 </li>
-
 
             </ul>
             <!--左侧导航栏 end-->
@@ -480,95 +321,54 @@
                                                         <thead>
                                                         <tr>
                                                             <th style="white-space:nowrap;">作业编号</th>
-                                                            <th style="white-space:nowrap;">作业科目</th>
-                                                            <th style="white-space:nowrap;">所属班级</th>
+                                                            <th style="white-space:nowrap;">作业内容</th>
+                                                            <th style="white-space:nowrap;">附件状态</th>
                                                             <th style="white-space:nowrap;">发布时间</th>
                                                             <th style="white-space:nowrap;">截止时间</th>
-                                                            <th style="white-space:nowrap;">作业内容</th>
-                                                            <th style="white-space:nowrap;">已交数量</th>
-                                                            <th style="white-space:nowrap;">下载状态</th>
+                                                            <th style="white-space:nowrap;">查看提交情况</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>语文</td>
-                                                            <td>三年级一班</td>
-                                                            <td>2019-04-30</td>
-                                                            <td>2019-05-10</td>
-                                                            <td style="white-space: normal;" >抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文</td>
-                                                            <td>35/50</td>
-                                                            <td>
-                                                                <div class='text-right'>
-                                                                    <a class='btn btn-success btn-mini' href='#'>
-                                                                        <i class='icon-ok'></i>
-                                                                    </a>
-                                                                    <a class='btn btn-danger btn-mini' href='#'>
-                                                                        <i class='icon-remove'></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>语文</td>
-                                                            <td>三年级一班</td>
-                                                            <td>2019-04-30</td>
-                                                            <td>2019-05-10</td>
-                                                            <td style="white-space: normal;" >抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文</td>
-                                                            <td>35/50</td>
-                                                            <td>
-                                                                <div class='text-right'>
-                                                                    <a class='btn btn-success btn-mini' href='#'>
-                                                                        <i class='icon-ok'></i>
-                                                                    </a>
-
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>语文</td>
-                                                            <td>三年级一班</td>
-                                                            <td>2019-04-30</td>
-                                                            <td>2019-05-10</td>
-                                                            <td style="white-space: normal;">抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文抄课文</td>
-                                                            <td>35/50</td>
-                                                            <td>
-                                                                <div class='text-right'>
-
-                                                                    <a class='btn btn-danger btn-mini' href='#'>
-                                                                        <i class='icon-remove'></i>
-                                                                        <span><a href="#"><span style="font-size: 16px;color: red;">点击进入下载</span></a></span>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-
+                                                        <c:forEach items="${tasks }" var="task">
+                                                        	<tr>
+	                                                            <td>${task.taskId }</td>
+	                                                            <td style="white-space: normal;" >
+	                                                            	<c:if test="${task.taskDesc == null}">
+	                                                            		无
+	                                                            	</c:if>
+	                                                            	<c:if test="${empty task.taskDesc}">
+	                                                            		无
+	                                                            	</c:if>
+	                                                            	${task.taskDesc }
+	                                                            </td>
+	                                                            <td>
+	                                                            	<c:if test="${task.fileName == null}">
+	                                                            		无
+	                                                            	</c:if>
+	                                                            	<c:if test="${task.fileName != null}">
+	                                                            		<a href='teacherctlr/downTask.do?fileName=${task.fileName }&taskId=${task.taskId }&fileType=teacher'>点击下载</a>
+	                                                            	</c:if>
+	                                                            <td><fmt:formatDate value="${task.taskRelease }" pattern="yyyy-MM-dd hh:mm:ss"/></td>
+	                                                            <td>
+	                                                            	<c:if test="${task.taskAbort != null }">
+	                                                            		<fmt:formatDate value="${task.taskAbort }" pattern="yyyy-MM-dd hh:mm:ss"/>
+	                                                            	</c:if>
+	                                                            	<c:if test="${task.taskAbort == null }">
+																		无
+	                                                            	</c:if>
+                                                          		</td>
+	                                                            <td><a href="teacherctlr/showStuHomeworks.do?taskId=${task.taskId }&classId=${task.classId }">查看详情</a></td>
+                                                        	</tr>
+                                                        	
+                                                        </c:forEach>
+                                                        
                                                         </tbody>
-                                                        <tfoot>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>E-mail</th>
-                                                            <th colspan='2'>Status</th>
-                                                        </tr>
-                                                        </tfoot>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- 作业清单 end-->
-
-                                <%--<!--作业发布 end -->--%>
-                                <%--<div class="container">--%>
-
-
-                                <%--</div>--%>
-                                <%--<!--作业发布 end -->--%>
 
 
                             </div>

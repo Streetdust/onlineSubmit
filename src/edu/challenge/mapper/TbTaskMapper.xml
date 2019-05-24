@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.challenge.mapper.TbTaskMapper" >
+  <resultMap id="BaseResultMap" type="edu.challenge.entity.TbTask" >
+    <constructor >
+      <idArg column="task_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="task_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="file_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="teacher_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="class_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="course_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="task_release" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="task_abort" jdbcType="DATE" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    task_id, task_desc, file_name, teacher_id, class_id, course_id, task_release, task_abort
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="edu.challenge.entity.TbTaskExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tb_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="edu.challenge.entity.TbTask" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_task
+    where course_id = #{courseId,jdbcType=VARCHAR} AND class_id=#{classId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="edu.challenge.entity.TbTaskExample" >
+    delete from tb_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="edu.challenge.entity.TbTask" >
+    insert into tb_task (task_id, task_desc, file_name, 
+      teacher_id, class_id, course_id, 
+      task_release, task_abort)
+    values (#{taskId,jdbcType=INTEGER}, #{taskDesc,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, 
+      #{teacherId,jdbcType=VARCHAR}, #{classId,jdbcType=INTEGER}, #{courseId,jdbcType=VARCHAR}, 
+      #{taskRelease,jdbcType=TIMESTAMP}, #{taskAbort,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.challenge.entity.TbTask" >
+    insert into tb_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="taskDesc != null" >
+        task_desc,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="taskRelease != null" >
+        task_release,
+      </if>
+      <if test="taskAbort != null" >
+        task_abort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="taskDesc != null" >
+        #{taskDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskRelease != null" >
+        #{taskRelease,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskAbort != null" >
+        #{taskAbort,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="edu.challenge.entity.TbTaskExample" resultType="java.lang.Integer" >
+    select count(*) from tb_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_task
+    <set >
+      <if test="record.taskId != null" >
+        task_id = #{record.taskId,jdbcType=INTEGER},
+      </if>
+      <if test="record.taskDesc != null" >
+        task_desc = #{record.taskDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        file_name = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherId != null" >
+        teacher_id = #{record.teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classId != null" >
+        class_id = #{record.classId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseId != null" >
+        course_id = #{record.courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskRelease != null" >
+        task_release = #{record.taskRelease,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.taskAbort != null" >
+        task_abort = #{record.taskAbort,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_task
+    set task_id = #{record.taskId,jdbcType=INTEGER},
+      task_desc = #{record.taskDesc,jdbcType=VARCHAR},
+      file_name = #{record.fileName,jdbcType=VARCHAR},
+      teacher_id = #{record.teacherId,jdbcType=VARCHAR},
+      class_id = #{record.classId,jdbcType=INTEGER},
+      course_id = #{record.courseId,jdbcType=VARCHAR},
+      task_release = #{record.taskRelease,jdbcType=TIMESTAMP},
+      task_abort = #{record.taskAbort,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.challenge.entity.TbTask" >
+    update tb_task
+    <set >
+      <if test="taskDesc != null" >
+        task_desc = #{taskDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        teacher_id = #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskRelease != null" >
+        task_release = #{taskRelease,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskAbort != null" >
+        task_abort = #{taskAbort,jdbcType=DATE},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.challenge.entity.TbTask" >
+    update tb_task
+    set task_desc = #{taskDesc,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      teacher_id = #{teacherId,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=INTEGER},
+      course_id = #{courseId,jdbcType=VARCHAR},
+      task_release = #{taskRelease,jdbcType=TIMESTAMP},
+      task_abort = #{taskAbort,jdbcType=DATE}
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  
+  <resultMap type="Tbtask" id="tbtaskMap">	
+		<id column="task_id" property="taskId" />
+      	<result column="task_desc" property="taskDesc"  />
+     	<result column="file_name" property="fileName" />
+      	<result column="teacher_id" property="teacherId"  />
+      	<result column="class_id" property="classId"  />
+      	<result column="course_id" property="courseId" />
+     	<result column="task_release" property="taskRelease"  />
+     	<result column="task_abort" property="taskAbort" />	
+	</resultMap>
+ 
+  <select id="selectSubmit" resultMap="tbtaskMap">
+	SELECT t.* from tb_task t 
+	RIGHT JOIN stu_file s
+	on t.task_id=s.task_id
+	WHERE s.student_id=#{studentId}
+	AND T.class_id=#{classId}
+	AND T.course_id=#{courseId}
+  </select>
+
+  <select id="selectUnsubmit" resultMap="tbtaskMap" >
+  SELECT * FROM tb_task t where t.task_id NOT IN 
+	(SELECT s.task_id FROM stu_file s WHERE student_id=#{studentId})
+	AND t.course_id=#{courseId}
+	AND t.class_id=#{classId}
+  </select>
+  
+   <resultMap id="stuTaskMap" type="edu.challenge.entity.StuTask" >
+    <constructor >
+      <arg column="student_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="task_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="student_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="file_release" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  
+  <select id="showStuHomeworks" parameterType="java.lang.Integer" resultMap="stuTaskMap">
+  	SELECT task_id,sf.student_id,student_name,file_release FROM stu_file sf 
+  	LEFT JOIN tb_student ts 
+  	ON sf.student_id = ts.student_id 
+  	WHERE task_id = #{taskId};
+  </select>
+</mapper>

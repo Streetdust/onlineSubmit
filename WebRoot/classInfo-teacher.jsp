@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>Flatty - Flat administration template</title>
+    <title>onlineSubmit Teacher</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
 
     <!--[if lt IE 9]>
@@ -71,7 +72,7 @@
             <div class='container-fluid'>
                 <a class='brand' href='index-stu.jsp'>
                     <i class='icon-heart-empty'></i>
-                    <span class='hidden-phone'>Flatty</span>
+                    <span class='hidden-phone'>onlineSubmit</span>
                 </a>
                 <a class='toggle-nav btn pull-left' href='#'>
                     <i class='icon-reorder'></i>
@@ -91,12 +92,7 @@
                                     Light
                                     <small>(default)</small>
                                 </a>
-                                <a data-change-to='assets/stylesheets/dark-theme.css' href='#'>
-                                    Dark
-                                </a>
-                                <a data-change-to='assets/stylesheets/dark-blue-theme.css' href='#'>
-                                    Dark blue
-                                </a>
+                               
                             </li>
                             <li class='divider'></li>
                             <li class='color-settings-contrast-color'>
@@ -148,6 +144,7 @@
                                 </a>
                             </li>
                         </ul>
+
                     </li>
                     <!-- ui设置 end -->
 
@@ -155,82 +152,7 @@
                     <li class='dropdown medium only-icon widget'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <i class='icon-rss'></i>
-                            <div class='label'>5</div>
                         </a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            John Doe signed up
-                                            <small class='muted'>just now</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #002
-                                            <small class='muted'>3 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            America Leannon commented Flatty with veeery long text.
-                                            <small class='muted'>1 hour ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            Jane Doe signed up
-                                            <small class='muted'>last week</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #001
-                                            <small class='muted'>1 year ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='widget-footer'>
-                                <a href='#'>所有消息</a>
-                            </li>
-                        </ul>
                     </li>
                     <!-- 消息提示栏 end -->
 
@@ -239,27 +161,19 @@
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23'/>
-                            <span class='user-name hidden-phone'>张希光</span>
+                            <span class='user-name hidden-phone'>${nowteacher.teacherName }</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
                             <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-user'></i>
-                                    个人中心
-                                </a>
-                            </li>
-                            <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-cog'></i>
-                                    设置
+                                <a href='teacherctlr/person.do?techerId=${nowteacher.teacherId }'>
+                                    <i class='icon-user'></i>个人中心
                                 </a>
                             </li>
                             <li class='divider'></li>
                             <li>
-                                <a href='sign_in.html'>
-                                    <i class='icon-signout'></i>
-                                    安全退出
+                                <a href='login.jsp'>
+                                    <i class='icon-signout'></i>安全退出
                                 </a>
                             </li>
                         </ul>
@@ -267,20 +181,6 @@
                     <!-- 用户栏 end -->
                 </ul>
                 <!-- 导航栏右侧 end -->
-
-
-                <!-- 导航栏搜索栏 start -->
-                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone"
-                      method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..."
-                       type="text" value=""/>
-                </form>
-                <!-- 导航栏搜索栏 end -->
-
-
-            </div>
         </div>
     </div>
 </header>
@@ -288,120 +188,45 @@
     <div id='main-nav-bg'></div>
     <nav class='' id='main-nav'>
         <div class='navigation'>
-
-            <div class='search'>
-                <!--不知道干啥的搜索框（暂时注掉） start-->
-                <form accept-charset="UTF-8" action="search_results.html" method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <div class='search-wrapper'>
-                    <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text"
-                           value=""/>
-                    <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                </div>
-                </form>
-                <!--不知道干啥的搜索框（暂时注掉） end-->
-            </div>
-
-
             <!--左侧导航栏 start-->
             <ul class='nav nav-stacked'>
-                <li class=''>
+                <li class='active'>
                     <a href='index-teacher.jsp'>
                         <i class='icon-dashboard'></i>
                         <span>主页</span>
                     </a>
                 </li>
                 <li class=''>
-                    <a class='dropdown-collapse' href='#'>
+                    <a class='dropdown-collapse'>
                         <i class='icon-edit'></i>
                         <span>查看所有作业</span>
                         <i class='icon-angle-down angle-down'></i>
                     </a>
                     <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>数学</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a class='dropdown-collapse' href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>英语</span>
-                            </a>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>计算机</span>
-                            </a>
-                        </li>
+                    	<c:forEach items="${courseClass }" var="cc">
+                    		<li>
+	                            <a class='dropdown-collapse'>
+	                                <i class='icon-caret-right'></i>
+	                                <span>${cc.course.courseName }</span>
+	                                <i class='icon-angle-down angle-down'></i>
+	                            </a>
+	                            <ul class='nav nav-stacked'>
+	                                <c:forEach items="${cc.classes }" var="cla">
+	                                	<li>
+		                                    <a href='teacherctlr/listTasks.do?classId=${cla.classId }'>
+		                                        <i class='icon-caret-right'></i>
+		                                        <span>${cc.course.classDepa }${cc.course.classMajor }${cla.classNum }</span>
+		                                    </a>
+	                               	 	</li>
+	                                </c:forEach>
+	                            </ul>
+                       	 </li>	
+                    	</c:forEach>
+                        
                     </ul>
                 </li>
 
                 <li class=''>
-                    <a class='dropdown-collapse ' href='#'>
-                        <i class='icon-tint'></i>
-                        <span>查看已交作业</span>
-                        <i class='icon-angle-down angle-down'></i>
-                    </a>
-                    <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class='active'>
                     <a href='classInfo-teacher.jsp'>
                         <i class='icon-star'></i>
                         <span>管理班级信息</span>
@@ -416,18 +241,16 @@
                 </li>
 
                 <li class=''>
-                    <a href='addNewNotice.jsp'>
+                    <a href='teacherctlr/listTasks.do?classId=-1'>
                         <i class='icon-calendar'></i>
                         <span>公告栏管理</span>
                     </a>
                 </li>
 
-
             </ul>
             <!--左侧导航栏 end-->
         </div>
     </nav>
-
 
     <!--主页内容 start-->
     <section id='content'>
@@ -462,7 +285,7 @@
                                     <div class='row-fluid'>
                                         <div class='span12 box' style='margin-bottom: 0'>
                                             <div class='box-header purple-background'>
-                                                <div class='title'>Tabs on top and bottom</div>
+                                                <div class='title'>班级信息管理</div>
                                                 <div class='actions'>
                                                     <a href="#" class="btn box-remove btn-mini btn-link"><i
                                                             class='icon-remove'></i>
@@ -475,948 +298,45 @@
                                                 <div class='row-fluid'>
                                                     <div class='span12'>
                                                         <div class='tabbable'>
-                                                            <ul class='nav nav-tabs'>
-                                                                <li class='active'>
-                                                                    <a data-toggle='tab' href='#tab1'>
-                                                                        <i class='icon-indent-left'></i>
-                                                                        班级信息管理
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a data-toggle='tab' href='#tab2'>
-                                                                        <i class='icon-edit text-red'></i>
-                                                                        授课班级管理
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a data-toggle='tab' href='#tab3'>
-                                                                        <i class='icon-ambulance text-blue'></i>
-                                                                        授课科目管理
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
+                                                            
                                                             <div class='tab-content'>
-                                                                <div class='tab-pane active' id='tab1'>
-                                                                    <!--选择班级 start-->
-                                                                    <hr class='hr-double'/>
-                                                                    <div class='row-fluid'>
-                                                                        <div class='span4 box bordered-box blue-border'>
-                                                                            <div class='box-header blue-background'>
-                                                                                <div class='title'>
-                                                                                    选择班级
-                                                                                </div>
-                                                                                <div class='actions'>
-                                                                                    <a href="#"
-                                                                                       class="btn box-remove btn-mini btn-link"><i
-                                                                                            class='icon-remove'></i>
-                                                                                    </a>
-                                                                                    <a href="#"
-                                                                                       class="btn box-collapse btn-mini btn-link"><i></i>
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class='box-content'>
-                                                                                <div class='row-fluid'>
-                                                                                    <div class='span12'>
-                                                                                        <div class='row-fluid'>
-                                                                                            <strong>班级信息如下:</strong>
-                                                                                            <select id="inputText"
-                                                                                                    class='select2 input-block-level'>
-                                                                                                <optgroup
-                                                                                                        label='Alaskan/Hawaiian Time Zone'>
-                                                                                                    <option value='AK'/>
-                                                                                                    Alaska
-                                                                                                    <option value='HI'/>
-                                                                                                    Hawaii
-                                                                                                </optgroup>
-                                                                                                <optgroup
-                                                                                                        label='Pacific Time Zone'>
-                                                                                                    <option value='CA'/>
-                                                                                                    California
-                                                                                                    <option value='NV'/>
-                                                                                                    Nevada
-                                                                                                    <option value='OR'/>
-                                                                                                    Oregon
-                                                                                                    <option value='WA'/>
-                                                                                                    Washington
-                                                                                                </optgroup>
-                                                                                                <optgroup
-                                                                                                        label='Mountain Time Zone'>
-                                                                                                    <option value='AZ'/>
-                                                                                                    Arizona
-                                                                                                    <option value='CO'/>
-                                                                                                    Colorado
-                                                                                                    <option value='ID'/>
-                                                                                                    Idaho
-                                                                                                    <option value='MT'/>
-                                                                                                    Montana
-                                                                                                    <option value='NE'/>
-                                                                                                    Nebraska
-                                                                                                    <option value='NM'/>
-                                                                                                    New Mexico
-                                                                                                    <option value='ND'/>
-                                                                                                    North Dakota
-                                                                                                    <option value='UT'/>
-                                                                                                    Utah
-                                                                                                    <option value='WY'/>
-                                                                                                    Wyoming
-                                                                                                </optgroup>
-                                                                                                <optgroup
-                                                                                                        label='Central Time Zone'>
-                                                                                                    <option value='AL'/>
-                                                                                                    Alabama
-                                                                                                    <option value='AR'/>
-                                                                                                    Arkansas
-                                                                                                    <option value='IL'/>
-                                                                                                    Illinois
-                                                                                                    <option value='IA'/>
-                                                                                                    Iowa
-                                                                                                    <option value='KS'/>
-                                                                                                    Kansas
-                                                                                                    <option value='KY'/>
-                                                                                                    Kentucky
-                                                                                                    <option value='LA'/>
-                                                                                                    Louisiana
-                                                                                                    <option value='MN'/>
-                                                                                                    Minnesota
-                                                                                                    <option value='MS'/>
-                                                                                                    Mississippi
-                                                                                                    <option value='MO'/>
-                                                                                                    Missouri
-                                                                                                    <option value='OK'/>
-                                                                                                    Oklahoma
-                                                                                                    <option value='SD'/>
-                                                                                                    South Dakota
-                                                                                                    <option value='TX'/>
-                                                                                                    Texas
-                                                                                                    <option value='TN'/>
-                                                                                                    Tennessee
-                                                                                                    <option value='WI'/>
-                                                                                                    Wisconsin
-                                                                                                </optgroup>
-                                                                                                <optgroup
-                                                                                                        label='Eastern Time Zone'>
-                                                                                                    <option value='CT'/>
-                                                                                                    Connecticut
-                                                                                                    <option value='DE'/>
-                                                                                                    Delaware
-                                                                                                    <option value='FL'/>
-                                                                                                    Florida
-                                                                                                    <option value='GA'/>
-                                                                                                    Georgia
-                                                                                                    <option value='IN'/>
-                                                                                                    Indiana
-                                                                                                    <option value='ME'/>
-                                                                                                    Maine
-                                                                                                    <option value='MD'/>
-                                                                                                    Maryland
-                                                                                                    <option value='MA'/>
-                                                                                                    Massachusetts
-                                                                                                    <option value='MI'/>
-                                                                                                    Michigan
-                                                                                                    <option value='NH'/>
-                                                                                                    New Hampshire
-                                                                                                    <option value='NJ'/>
-                                                                                                    New Jersey
-                                                                                                    <option value='NY'/>
-                                                                                                    New York
-                                                                                                    <option value='NC'/>
-                                                                                                    North Carolina
-                                                                                                    <option value='OH'/>
-                                                                                                    Ohio
-                                                                                                    <option value='PA'/>
-                                                                                                    Pennsylvania
-                                                                                                    <option value='RI'/>
-                                                                                                    Rhode Island
-                                                                                                    <option value='SC'/>
-                                                                                                    South Carolina
-                                                                                                    <option value='VT'/>
-                                                                                                    Vermont
-                                                                                                    <option value='VA'/>
-                                                                                                    Virginia
-                                                                                                    <option value='WV'/>
-                                                                                                    West Virginia
-                                                                                                </optgroup>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button class="btn btn-success" name="button"
-                                                                            style="margin-bottom:5px" type="submit">
-                                                                        确认查询
-                                                                    </button>
-                                                                    <button class="btn btn-warning" name="button"
-                                                                            style="margin-bottom:5px" type="submit">
-                                                                        点击查询之后,您可以点击我导出班级信息表哦～
-                                                                    </button>
-                                                                    <!--选择班级 end-->
-
-                                                                    <!--同学信息 start-->
-                                                                    <hr class='hr-double'/>
-                                                                    <div class='row-fluid'>
-                                                                        <div class='span12 box bordered-box orange-border'
-                                                                             style='margin-bottom:0;'>
-                                                                            <div class='box-header purple-background'>
-                                                                                <div class='title'>查询信息如下:</div>
-                                                                                <div class='actions'>
-                                                                                    <a href="#"
-                                                                                       class="btn box-remove btn-mini btn-link"><i
-                                                                                            class='icon-remove'></i>
-                                                                                    </a>
-                                                                                    <a href="#"
-                                                                                       class="btn box-collapse btn-mini btn-link"><i></i>
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class='box-content box-no-padding'>
-                                                                                <div class='responsive-table'>
-                                                                                    <div class='scrollable-area'>
-
-                                                                                        <table class='data-table-column-filter table table-bordered table-striped'
-                                                                                               style='margin-bottom:0;'>
-                                                                                            <thead>
-                                                                                            <tr>
-                                                                                                <th>
-                                                                                                    Name
-                                                                                                </th>
-                                                                                                <th>
-                                                                                                    E-mail
-                                                                                                </th>
-                                                                                                <th>
-                                                                                                    Status
-                                                                                                </th>
-                                                                                                <th></th>
-                                                                                            </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                            <tr>
-                                                                                                <td>Lavern Oberbrunner
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    antonette@hotmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>America Champlin
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    marques@hotmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Stone Herman</td>
-                                                                                                <td>romaine@yahoo.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-warning'>Warning</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Arjun Ernser</td>
-                                                                                                <td>
-                                                                                                    estefania@hotmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Marina Zemlak</td>
-                                                                                                <td>
-                                                                                                    emmanuelle@hotmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-warning'>Warning</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Jarvis Cummings</td>
-                                                                                                <td>amira@hotmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-success'>Success</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Kip Bruen</td>
-                                                                                                <td>misty@gmail.com</td>
-                                                                                                <td>
-                                                                                                    <span class='label label-success'>Success</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Mayra Kohler</td>
-                                                                                                <td>lizzie@gmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Jamey Ward</td>
-                                                                                                <td>marty@gmail.com</td>
-                                                                                                <td>
-                                                                                                    <span class='label label-warning'>Warning</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Ken Beer</td>
-                                                                                                <td>lenny@yahoo.com</td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Celine Collier</td>
-                                                                                                <td>kristina@yahoo.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Madaline Klocko</td>
-                                                                                                <td>rahsaan@gmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Golda Paucek</td>
-                                                                                                <td>dagmar@yahoo.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-success'>Success</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Jevon Wisoky</td>
-                                                                                                <td>mara@gmail.com</td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Yvonne King</td>
-                                                                                                <td>
-                                                                                                    pearlie@hotmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-warning'>Warning</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Uriel Brakus</td>
-                                                                                                <td>kyleigh@gmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Bennie Bernhard</td>
-                                                                                                <td>lexi@gmail.com</td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Juanita Glover</td>
-                                                                                                <td>jasen@yahoo.com</td>
-                                                                                                <td>
-                                                                                                    <span class='label label-success'>Success</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Asha Reynolds</td>
-                                                                                                <td>van@yahoo.com</td>
-                                                                                                <td>
-                                                                                                    <span class='label label-important'>Important</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>Donnell Bode</td>
-                                                                                                <td>jakob@hotmail.com
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <span class='label label-warning'>Warning</span>
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class='text-right'>
-                                                                                                        <a class='btn btn-success btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-ok'></i>
-                                                                                                        </a>
-                                                                                                        <a class='btn btn-danger btn-mini'
-                                                                                                           href='#'>
-                                                                                                            <i class='icon-remove'></i>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            </tbody>
-                                                                                            <tfoot>
-                                                                                            <tr>
-                                                                                                <th>Name</th>
-                                                                                                <th>E-mail</th>
-                                                                                                <th colspan='2'>Status
-                                                                                                </th>
-                                                                                            </tr>
-                                                                                            </tfoot>
-                                                                                        </table>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--同学信息 end-->
-                                                                </div>
-                                                                <div class='tab-pane' id='tab2'>
+                                                                
                                                                     <!--授课班级管理 start-->
 
                                                                     <div class='container'>
-                                                                        <label class='control-label' for='chooseClass'>请勾选您要操作的班级:</label>
-
-                                                                        <table>
-                                                                            <th>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="radio-inline">
-                                                                                    <input type="radio"
-                                                                                           name="inlineRadioOptions"
-                                                                                           id="inlineRadio1"
-                                                                                           value="option1"> 全选
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="radio-inline">
-                                                                                    <input type="radio"
-                                                                                           name="inlineRadioOptions"
-                                                                                           id="inlineRadio2"
-                                                                                           value="option2"> 全不选
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="radio-inline">
-                                                                                    <input type="radio"
-                                                                                           name="inlineRadioOptions"
-                                                                                           id="inlineRadio3"
-                                                                                           value="option3"> 反选
-                                                                                </label>
-                                                                            </td>
-
-
-                                                                            </th>
-                                                                        </table>
-
-
-                                                                        <hr class='hr-double'/>
                                                                         <table id="chooseClass"
                                                                                class="table table-condensed table-striped table-hover">
-                                                                            <th>
                                                                                 <%--<td>序号</td>--%>
-                                                                            <td style="white-space:nowrap;font-size: 20px;color: red;">
-                                                                                班级编号
-                                                                            </td>
-                                                                            <td style="white-space:nowrap;font-size: 20px;color: red;">
+                                                                            <th style="white-space:nowrap;font-size: 20px;color: red;">
                                                                                 班级名称
-                                                                            </td>
-                                                                            <td style="white-space:nowrap;font-size: 20px;color: red;">
-                                                                                所授科目
-                                                                            </td>
-                                                                            <td style="white-space:nowrap;font-size: 20px;color: red;">
+                                                                            </th>
+                                                                            <th style="white-space:nowrap;font-size: 20px;color: red;">
+                                                                                院系
+                                                                            </th>
+                                                                            <th style="white-space:nowrap;font-size: 20px;color: red;">
+                                                                                科目
+                                                                            </th>
+                                                                            
+                                                                            <th style="white-space:nowrap;font-size: 20px;color: red;">
                                                                                 选择操作
-                                                                            </td>
-
                                                                             </th>
-                                                                            <tr>
-                                                                                <td><input type="checkbox"/></td>
-                                                                                <td>1</td>
-                                                                                <td>三年级一班</td>
-                                                                                <td>语文</td>
-                                                                                <td><i class=" icon-trash"></i></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><input type="checkbox"/></td>
-                                                                                <td>2</td>
-                                                                                <td>三年级二班</td>
-                                                                                <td>语文</td>
-                                                                                <td><i class=" icon-trash"></i></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><input type="checkbox"/></td>
-                                                                                <td>1</td>
-                                                                                <td>三年级三班</td>
-                                                                                <td>语文</td>
-                                                                                <td><i class=" icon-trash"></i></td>
-                                                                            </tr>
+                                                                            <c:forEach items="${courseClass }" var="cc">
+                                                                            	<c:forEach items="${cc.classes }" var="cla">
+                                                                           			<tr>
+		                                                                                <td>${cc.course.classMajor }${cla.classNum }</td>
+		                                                                                <td>${cc.course.classDepa }</td>
+		                                                                                <td>${cc.course.courseName }</td>
+		                                                                                <td><a href="teacherctlr/getStudents.do?classId=${cla.classId }">查看详情</a></td>
+		                                                                            </tr>
+	                                                                                </c:forEach>
+	                                                                             </c:forEach>
                                                                         </table>
-                                                                    </div>
-
-                                                                    <hr class='hr-double'/>
-                                                                    <div class="container">
-                                                                        <label class='control-label' for='chooseClass'>请选择您要进行的操作:</label>
-
-                                                                        <button id="addClassInfo"
-                                                                                class="btn btn-success" name="button"
-                                                                                style="margin-bottom:5px" type="submit"
-                                                                                data-toggle="modal"
-                                                                                data-target="#myModal">
-                                                                            点击新增班级
-                                                                        </button>
-                                                                        <button class="btn btn-danger" name="button"
-                                                                                style="margin-bottom:5px" type="submit">
-                                                                            删除所选班级
-                                                                        </button>
-                                                                    </div>
-
-                                                                    <!-- Modal(新增班级) -->
-                                                                    <div class="modal fade" id="myModal" tabindex="-1"
-                                                                         role="dialog" aria-labelledby="myModalLabel">
-                                                                        <div class="modal-dialog" role="document">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <button type="button" class="close"
-                                                                                            data-dismiss="modal"
-                                                                                            aria-label="Close"><span
-                                                                                            aria-hidden="true">&times;</span>
-                                                                                    </button>
-                                                                                    <h4 class="modal-title"
-                                                                                        id="myModalLabel">编辑新增班级信息:</h4>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <!--模态框 班级信息 start-->
-                                                                                    <form class="form-horizontal">
-                                                                                        <div class="form-group">
-                                                                                            <label for="inputEmail3"
-                                                                                                   class="col-sm-2 control-label">选择班级:</label>
-                                                                                            <div class="col-sm-10">
-                                                                                                <select id="inputEmail3"
-                                                                                                        class="form-control">
-                                                                                                    <option>三年级一班
-                                                                                                    </option>
-                                                                                                    <option>三年级二班
-                                                                                                    </option>
-                                                                                                    <option>三年级三班
-                                                                                                    </option>
-                                                                                                    <option>三年级四班
-                                                                                                    </option>
-                                                                                                    <option>三年级五班
-                                                                                                    </option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="inputPassword3"
-                                                                                                   class="col-sm-2 control-label">选择科目:</label>
-                                                                                            <div class="col-sm-10">
-                                                                                                <select id="inputPassword3"
-                                                                                                        class="form-control">
-
-                                                                                                    <option>语文</option>
-                                                                                                    <option>数学</option>
-                                                                                                    <option>英语</option>
-
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </form>
-                                                                                    <!--模态框 班级信息 end-->
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button id="closeModal"
-                                                                                            type="button"
-                                                                                            class="btn btn-default"
-                                                                                            data-dismiss="modal">关闭
-                                                                                    </button>
-                                                                                    <button id="modalAddNewClass"
-                                                                                            type="button"
-                                                                                            class="btn btn-primary">确认增加
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--授课班级管理 end-->
-                                                                </div>
-                                                                <div class='tab-pane' id='tab3'>
-                                                                    <!--授课科目管理 start-->
-                                                                    <div class='container'>
-                                                                        <label class='control-label'
-                                                                               for='chooseSubject'>请勾选您要进行的操作:</label>
-
-                                                                        <table>
-                                                                            <th>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="radio-inline">
-                                                                                    <input type="radio"
-                                                                                           name="inlineRadioOptions"
-                                                                                           id="inlineRadio4"
-                                                                                           value="option1"> 全选
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="radio-inline">
-                                                                                    <input type="radio"
-                                                                                           name="inlineRadioOptions"
-                                                                                           id="inlineRadio5"
-                                                                                           value="option2"> 全不选
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="radio-inline">
-                                                                                    <input type="radio"
-                                                                                           name="inlineRadioOptions"
-                                                                                           id="inlineRadio6"
-                                                                                           value="option3"> 反选
-                                                                                </label>
-                                                                            </td>
-
-
-                                                                            </th>
-                                                                        </table>
-
-
-                                                                        <hr class='hr-double'/>
-                                                                        <table id="chooseSubject">
-                                                                            <th>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="checkbox-inline">
-                                                                                    <input type="checkbox"
-                                                                                           id="inlineCheckbox1"
-                                                                                           value="option1"> 语文
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="checkbox-inline">
-                                                                                    <input type="checkbox"
-                                                                                           id="inlineCheckbox2"
-                                                                                           value="option1"> 数学
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 80px;">
-                                                                                <label class="checkbox-inline">
-                                                                                    <input type="checkbox"
-                                                                                           id="inlineCheckbox3"
-                                                                                           value="option1"> 英语
-                                                                                </label>
-                                                                            </td>
-
-
-                                                                            </th>
-                                                                        </table>
-                                                                    </div>
-
-                                                                    <hr class='hr-double'/>
-                                                                    <div class="container">
-                                                                        <label class='control-label' for='chooseClass'>请选择您要进行的操作:</label>
-
-                                                                        <button id="addSubjectInfo"
-                                                                                class="btn btn-success" name="button"
-                                                                                style="margin-bottom:5px" type="submit"
-                                                                                data-toggle="modal"
-                                                                                data-target="#myModal2">
-                                                                            点击新增科目
-                                                                        </button>
-                                                                        <button class="btn btn-danger" name="button"
-                                                                                style="margin-bottom:5px" type="submit">
-                                                                            删除所选科目
-                                                                        </button>
-                                                                    </div>
-
-                                                                    <!-- Modal(新增科目) -->
-                                                                    <div class="modal fade" id="myModal2" tabindex="-1"
-                                                                         role="dialog" aria-labelledby="myModalLabel">
-                                                                        <div class="modal-dialog" role="document">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <button type="button" class="close"
-                                                                                            data-dismiss="modal"
-                                                                                            aria-label="Close"><span
-                                                                                            aria-hidden="true">&times;</span>
-                                                                                    </button>
-                                                                                    <h4 class="modal-title"
-                                                                                        id="myModalLabel2">
-                                                                                        编辑新增科目信息:</h4>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <!--模态框 班级信息 start-->
-                                                                                    <form class="form-horizontal">
-                                                                                        <div class="form-group">
-                                                                                            <label for="inputEmail3"
-                                                                                                   class="col-sm-2 control-label">选择科目:</label>
-                                                                                            <div class="col-sm-10">
-                                                                                                <select id="inputEmail4"
-                                                                                                        class="form-control">
-                                                                                                    <option>语文
-                                                                                                    </option>
-                                                                                                    <option>英语
-                                                                                                    </option>
-                                                                                                    <option>数学
-                                                                                                    </option>
-
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </form>
-                                                                                    <!--模态框 科目信息 end-->
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button id="closeModal2"
-                                                                                            type="button"
-                                                                                            class="btn btn-default"
-                                                                                            data-dismiss="modal">关闭
-                                                                                    </button>
-                                                                                    <button id="modalAddNewClass2"
-                                                                                            type="button"
-                                                                                            class="btn btn-primary">确认增加
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--授课科目管理 end-->
+                                                                    
+                                                                   
+                                                                    
+                                                                    
+                                                                    
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>

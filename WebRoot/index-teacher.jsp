@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>Flatty - Flat administration template</title>
+    <title>onlineSubmit</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
 
     <!--[if lt IE 9]>
@@ -71,7 +72,7 @@
             <div class='container-fluid'>
                 <a class='brand' href='index-teacher.jsp'>
                     <i class='icon-heart-empty'></i>
-                    <span class='hidden-phone'>Flatty</span>
+                    <span class='hidden-phone'>onlineSubmit</span>
                 </a>
                 <a class='toggle-nav btn pull-left' href='#'>
                     <i class='icon-reorder'></i>
@@ -91,12 +92,7 @@
                                     Light
                                     <small>(default)</small>
                                 </a>
-                                <a data-change-to='assets/stylesheets/dark-theme.css' href='#'>
-                                    Dark
-                                </a>
-                                <a data-change-to='assets/stylesheets/dark-blue-theme.css' href='#'>
-                                    Dark blue
-                                </a>
+                               
                             </li>
                             <li class='divider'></li>
                             <li class='color-settings-contrast-color'>
@@ -155,82 +151,9 @@
                     <li class='dropdown medium only-icon widget'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <i class='icon-rss'></i>
-                            <div class='label'>5</div>
+                            
                         </a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            John Doe signed up
-                                            <small class='muted'>just now</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #002
-                                            <small class='muted'>3 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            America Leannon commented Flatty with veeery long text.
-                                            <small class='muted'>1 hour ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            Jane Doe signed up
-                                            <small class='muted'>last week</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #001
-                                            <small class='muted'>1 year ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='widget-footer'>
-                                <a href='#'>所有消息</a>
-                            </li>
-                        </ul>
+                       
                     </li>
                     <!-- 消息提示栏 end -->
 
@@ -239,27 +162,19 @@
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23'/>
-                            <span class='user-name hidden-phone'>张希光</span>
+                            <span class='user-name hidden-phone'>${nowteacher.teacherName }</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
                             <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-user'></i>
-                                    个人中心
-                                </a>
-                            </li>
-                            <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-cog'></i>
-                                    设置
+                                <a href='teacherctlr/person.do?techerId=${nowteacher.teacherId }'>
+                                    <i class='icon-user'></i>个人中心
                                 </a>
                             </li>
                             <li class='divider'></li>
                             <li>
-                                <a href='sign_in.html'>
-                                    <i class='icon-signout'></i>
-                                    安全退出
+                                <a href='login.jsp'>
+                                    <i class='icon-signout'></i>安全退出
                                 </a>
                             </li>
                         </ul>
@@ -267,19 +182,6 @@
                     <!-- 用户栏 end -->
                 </ul>
                 <!-- 导航栏右侧 end -->
-
-
-                <!-- 导航栏搜索栏 start -->
-                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone"
-                      method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..."
-                       type="text" value=""/>
-                </form>
-                <!-- 导航栏搜索栏 end -->
-
-
             </div>
         </div>
     </div>
@@ -289,21 +191,6 @@
     <div id='main-nav-bg'></div>
     <nav class='' id='main-nav'>
         <div class='navigation'>
-
-            <div class='search'>
-                <!--不知道干啥的搜索框（暂时注掉） start-->
-                <form accept-charset="UTF-8" action="search_results.html" method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <div class='search-wrapper'>
-                    <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text"
-                           value=""/>
-                    <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                </div>
-                </form>
-                <!--不知道干啥的搜索框（暂时注掉） end-->
-            </div>
-
-
             <!--左侧导航栏 start-->
             <ul class='nav nav-stacked'>
                 <li class='active'>
@@ -313,93 +200,32 @@
                     </a>
                 </li>
                 <li class=''>
-                    <a class='dropdown-collapse' href='#'>
+                    <a class='dropdown-collapse'>
                         <i class='icon-edit'></i>
                         <span>查看所有作业</span>
                         <i class='icon-angle-down angle-down'></i>
                     </a>
                     <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>数学</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a class='dropdown-collapse' href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>英语</span>
-                            </a>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>计算机</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class=''>
-                    <a class='dropdown-collapse ' href='#'>
-                        <i class='icon-tint'></i>
-                        <span>查看已交作业</span>
-                        <i class='icon-angle-down angle-down'></i>
-                    </a>
-                    <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    	<c:forEach items="${courseClass }" var="cc">
+                    		<li>
+	                            <a class='dropdown-collapse'>
+	                                <i class='icon-caret-right'></i>
+	                                <span>${cc.course.courseName }</span>
+	                                <i class='icon-angle-down angle-down'></i>
+	                            </a>
+	                            <ul class='nav nav-stacked'>
+	                                <c:forEach items="${cc.classes }" var="cla">
+	                                	<li>
+		                                    <a href='teacherctlr/listTasks.do?classId=${cla.classId }'>
+		                                        <i class='icon-caret-right'></i>
+		                                        <span>${cc.course.classDepa }${cc.course.classMajor }${cla.classNum }</span>
+		                                    </a>
+	                               	 	</li>
+	                                </c:forEach>
+	                            </ul>
+                       	 </li>	
+                    	</c:forEach>
+                        
                     </ul>
                 </li>
                 <li class=''>
@@ -417,12 +243,11 @@
                 </li>
 
                 <li class=''>
-                    <a href='addNewNotice.jsp'>
+                    <a href='teacherctlr/listTasks.do?classId=-1'>
                         <i class='icon-calendar'></i>
                         <span>公告栏管理</span>
                     </a>
                 </li>
-
 
             </ul>
             <!--左侧导航栏 end-->
@@ -456,33 +281,11 @@
                     <div class='alert alert-info'>
                         <a class='close' data-dismiss='alert' href='#'>&times;</a>
                         你好:
-                        <strong>Flatty (v2)</strong>
+                        <strong>${nowteacher.teacherName } (v2)</strong>
                         - 希望你能喜欢这个UI. 不要忘记 - 你可以修改成你喜欢的颜色
                         <i class='icon-adjust'></i>
                         如果你想的话.
                     </div>
-
-                    <div class='row-fluid'>
-                        <div class='span6 box'>
-                            <div class='box-header'>
-                                <div class='title'>
-                                    <i class='icon-inbox'></i>
-                                    近期作业完成情况
-                                </div>
-                                <div class='actions'>
-                                    <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
-                                    </a>
-                                    <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class='box-content'>
-                                <div id='stats-chart1'></div>
-                            </div>
-                        </div>
-
-                    </div>
-
 
                     <hr class='hr-drouble'/>
                     <div class='row-fluid'>
@@ -502,19 +305,14 @@
                             <div class='row-fluid'>
                                 <div class='span12'>
                                     <div class='box-content box-statistic'>
-                                        <h3 class='title text-error'>91</h3>
-                                        <small>新发布的作业:</small>
+                                        <h3 class='title text-error'>${size }</h3>
+                                        <small>总共作业数:</small>
                                         <div class='text-error icon-plus align-right'></div>
                                     </div>
                                     <div class='box-content box-statistic'>
                                         <h3 class='title text-success'>1</h3>
                                         <small>已完成的作业:</small>
                                         <div class='text-success icon-ok align-right'></div>
-                                    </div>
-                                    <div class='box-content box-statistic'>
-                                        <h3 class='title text-info'>123</h3>
-                                        <small>待完成的作业:</small>
-                                        <div class='text-info icon-time align-right'></div>
                                     </div>
                                 </div>
                             </div>
@@ -527,20 +325,18 @@
                             <div class='span6 offset3'>
                                 <div class='text-center'>
                                     <h2>近期事件一览:</h2>
-                                    <small class='muted'>列举了各科目老师发布的公告等信息!
-                                    </small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class='row-fluid'>
-                        <div class='span6'>
+                        <div class='span12'>
                             <div class='row-fluid todo-list'>
                                 <div class='span12 box box-nomargin'>
                                     <div class='box-header'>
                                         <div class='title'>
                                             <i class='icon-list-alt'></i>
-                                            公告栏:
+                                            	近期公告栏:
                                         </div>
                                         <div class='actions'>
                                             <a href="#" class="btn box-remove btn-mini btn-link"><i
@@ -552,7 +348,7 @@
                                     </div>
                                     <div class='box-content box-no-padding'>
                                         <div class='sortable-container'>
-                                            <form accept-charset="UTF-8" action="#" class="new-todo" method="post"/>
+                                            <form accept-charset="UTF-8" action="#" class="new-todo" method="post">
                                             <div style="margin:0;padding:0;display:inline"><input name="utf8"
                                                                                                   type="hidden"
                                                                                                   value="&#x2713;"/><input
@@ -564,429 +360,36 @@
                                                 <i class='icon-plus'></i>
                                             </button>
                                             </form>
-                                            <div class='date text-contrast'>今天:</div>
+                                            <div class='date text-contrast'>近一周:</div>
                                             <ul class='unstyled sortable' data-sortable-axis='y'
                                                 data-sortable-connect='.sortable'>
-                                                <li class='important item'>
+                                                <c:forEach items="${recentTasks}" var="rt">
+                                                	<li class='important item'>
                                                     <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        Voluptas voluptas consequatur omnis nisi.
+                                                        <a href="teacherctlr/selectTask.do?taskId=${rt.taskId }">
+                                                        	<c:if test="${rt.taskDesc != null }">
+                                                    			<input type='checkbox' value=""/>${rt.taskDesc }
+                                                    		</c:if>
+                                                        	<c:if test="${rt.taskDesc == null }">
+                                                    			无内容
+                                                    		</c:if>
+                                                    		<c:if test="${empty rt.taskDesc}">
+                                                    			无内容
+                                                    		</c:if>
+                                                        </a>
                                                     </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip' data-placement='top'
-                                                           href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip' data-placement='top'
-                                                           href='#' title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#' title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class='item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        Odit veniam occaecati fugit.
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip' data-placement='top'
-                                                           href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip' data-placement='top'
-                                                           href='#' title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#' title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class='done item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input checked='checked' type='checkbox'/>
-                                                        Ad aliquid voluptas labore magnam et ut.
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip' data-placement='top'
-                                                           href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip' data-placement='top'
-                                                           href='#' title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#' title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class='item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        <i class='icon-envelope-alt'></i>
-                                                        Vel velit fuga dolorum earum rem.
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip' data-placement='top'
-                                                           href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip' data-placement='top'
-                                                           href='#' title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#' title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class='date text-contrast'>Due Wed, Sep 19, 2013</div>
-                                            <ul class='unstyled sortable' data-sortable-axis='y'
-                                                data-sortable-connect='.sortable'>
-                                                <li class='item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        Qui pariatur eum ex impedit.
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip' data-placement='top'
-                                                           href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip' data-placement='top'
-                                                           href='#' title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#' title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class='important item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        Illo aut officiis eum mollitia voluptatibus.
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip' data-placement='top'
-                                                           href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip' data-placement='top'
-                                                           href='#' title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#' title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class='item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        In et rerum ipsam.
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip' data-placement='top'
-                                                           href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip' data-placement='top'
-                                                           href='#' title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#' title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <li class='item'>
-                                                    <label class='check pull-left todo'>
-                                                        <input type='checkbox'/>
-                                                        Asperiores sed praesentium assumenda recusandae ea.
-                                                    </label>
-                                                    <div class='actions pull-right'>
-                                                        <a class='btn btn-link edit has-tooltip' data-placement='top'
-                                                           href='#' title='Edit todo'>
-                                                            <i class='icon-pencil'></i>
-                                                        </a>
-                                                        <a class='btn btn-link remove has-tooltip' data-placement='top'
-                                                           href='#' title='Remove todo'>
-                                                            <i class='icon-remove'></i>
-                                                        </a>
-                                                        <a class='btn btn-link important has-tooltip'
-                                                           data-placement='top' href='#' title='Mark as important'>
-                                                            <i class='icon-bookmark-empty'></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
+                                                    
+                                               	 </li>
+                                                </c:forEach>
+                                                
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class='span6'>
-                            <div class='row-fluid recent-activity'>
-                                <div class='span12 box box-nomargin'>
-                                    <div class='box-header'>
-                                        <div class='title'>
-                                            <i class='icon-refresh'></i>
-                                            最近活动汇总:
-                                        </div>
-                                        <div class='actions'>
-                                            <a href="#" class="btn box-remove btn-mini btn-link"><i
-                                                    class='icon-remove'></i>
-                                            </a>
-                                            <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class='box-content box-no-padding'>
-                                        <ul class='nav nav-tabs nav-tabs-simple'>
-                                            <li class='active'>
-                                                <a href="#users" class="green-border" data-toggle="tab"><i
-                                                        class='icon-user text-green'></i>
-                                                    Users
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                        <div class='tab-content'>
-                                            <div class='tab-pane fade in active' id='users'>
-                                                <ul class='unstyled users list-hover list-striped'>
-
-                                                    <li>
-                                                        <div class='avatar pull-left'>
-                                                            <img alt='Avatar' height='23' src='assets/images/avatar.jpg'
-                                                                 width='23'/>
-                                                        </div>
-                                                        <div class='action pull-left'>
-                                                            <a href="#" class="text-contrast">Guadalupe Ward</a>
-                                                            signed up
-                                                        </div>
-                                                        <small class='date pull-right muted'>
-                                                            <span class='timeago fade has-tooltip' data-placement='top'
-                                                                  title='2013-05-30 20:56:41 +0200'>May 30, 2013 - 20:56</span>
-                                                            <i class='icon-time'></i>
-                                                        </small>
-                                                    </li>
-
-
-                                                    <li>
-                                                        <div class='avatar pull-left'>
-                                                            <div class='icon-user'></div>
-                                                        </div>
-                                                        <div class='action pull-left'>
-                                                            <a href="#" class="text-contrast">Emerson Weissnat II</a>
-                                                            commented
-                                                        </div>
-                                                        <small class='date pull-right muted'>
-                                                            <span class='timeago fade has-tooltip' data-placement='top'
-                                                                  title='2013-05-30 20:57:41 +0200'>May 30, 2013 - 20:57</span>
-                                                            <i class='icon-time'></i>
-                                                        </small>
-                                                    </li>
-                                                    <li>
-                                                        <div class='avatar pull-left'>
-                                                            <div class='icon-user'></div>
-                                                        </div>
-                                                        <div class='action pull-left'>
-                                                            <a href="#" class="text-contrast">Elody O&#x27;Keefe</a>
-                                                            signed in
-                                                        </div>
-                                                        <small class='date pull-right muted'>
-                                                            <span class='timeago fade has-tooltip' data-placement='top'
-                                                                  title='2013-05-30 20:58:41 +0200'>May 30, 2013 - 20:58</span>
-                                                            <i class='icon-time'></i>
-                                                        </small>
-                                                    </li>
-                                                    <li>
-                                                        <div class='avatar pull-left'>
-                                                            <img alt='Avatar' height='23' src='assets/images/avatar.jpg'
-                                                                 width='23'/>
-                                                        </div>
-                                                        <div class='action pull-left'>
-                                                            <a href="#" class="text-contrast">Joana Zboncak</a>
-                                                            uploaded photo
-                                                        </div>
-                                                        <small class='date pull-right muted'>
-                                                            <span class='timeago fade has-tooltip' data-placement='top'
-                                                                  title='2013-05-30 20:59:41 +0200'>May 30, 2013 - 20:59</span>
-                                                            <i class='icon-time'></i>
-                                                        </small>
-                                                    </li>
-                                                    <li>
-                                                        <div class='avatar pull-left'>
-                                                            <img alt='Avatar' height='23' src='assets/images/avatar.jpg'
-                                                                 width='23'/>
-                                                        </div>
-                                                        <div class='action pull-left'>
-                                                            <a href="#" class="text-contrast">Zander Turner</a>
-                                                            signed in
-                                                        </div>
-                                                        <small class='date pull-right muted'>
-                                                            <span class='timeago fade has-tooltip' data-placement='top'
-                                                                  title='2013-05-30 21:00:41 +0200'>May 30, 2013 - 21:00</span>
-                                                            <i class='icon-time'></i>
-                                                        </small>
-                                                    </li>
-                                                    <li>
-                                                        <div class='avatar pull-left'>
-                                                            <img alt='Avatar' height='23' src='assets/images/avatar.jpg'
-                                                                 width='23'/>
-                                                        </div>
-                                                        <div class='action pull-left'>
-                                                            <a href="#" class="text-contrast">Miss Price Reynolds</a>
-                                                            commented
-                                                        </div>
-                                                        <small class='date pull-right muted'>
-                                                            <span class='timeago fade has-tooltip' data-placement='top'
-                                                                  title='2013-05-30 21:01:41 +0200'>May 30, 2013 - 21:01</span>
-                                                            <i class='icon-time'></i>
-                                                        </small>
-                                                    </li>
-                                                </ul>
-
-                                                <div class='load-more'>
-                                                    <a href="#" class="btn btn-block"
-                                                       data-loading-text="&lt;i class=&#x27;icon-spinner icon-spin&#x27;&gt;&lt;/i&gt; Loading more..."
-                                                       id="users-more-activity"><i class='icon-circle-arrow-down'></i>
-                                                        Load more
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
-                    <div class="container-fluid">
-                        <div class='group-header'>
-                            <div class='row-fluid'>
-                                <div class='span6 offset3'>
-                                    <div class='text-center'>
-                                        <h2>联系人及Email</h2>
-                                        <small class='muted'>You can send some message in chat below!</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='row-fluid'>
-                            <div class='span6'>
-                                <div class='chat row-fluid'>
-                                    <div class='box box-nomargin span12'>
-                                        <div class='box-content box-no-padding'>
-                                            <div class='clearfix' id='slider'>
-                                                <div class='slider-content'>
-                                                    <ul>
-                                                        <li id='addressbook_a'>
-                                                            <a class='title' name='a'>A</a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href='#'>Adam</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Alex</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Ali</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Apple</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Arthur</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Ashley</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li id='addressbook_b'>
-                                                            <a class='title' name='b'>B</a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href='#'>Barry</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Becky</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Biff</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Billy</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Bozarking</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href='#'>Bryan</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class='span6' style="position: relative;left: 640px;top: -1110px;">
-                            <div class='row-fluid'>
-                                <div class='span12 box box-nomargin'>
-                                    <div class='box-header blue-background'>
-                                        <div class='title'>
-                                            <div class='icon-envelope-alt'></div>
-                                            发送电子邮件
-                                        </div>
-                                        <div class='actions'>
-                                            <a href="#" class="btn box-remove btn-mini btn-link"><i
-                                                    class='icon-remove'></i>
-                                            </a>
-                                            <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class='box-content'>
-                                        <input class="span12" id="email" name="email" placeholder="E-mail地址" type="text"
-                                               value=""/>
-                                        <textarea class="span12 wysihtml5" cols="40" id="body_" name="body[]"
-                                                  placeholder="Your message..." rows="5">
-                                        </textarea>
-                                        <div class='text-right'>
-                                            <a href="#" class="btn btn-primary">发送</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    
                     <div class='group-header'>
                         <div class='row-fluid'>
                             <div class='span6 offset3'>

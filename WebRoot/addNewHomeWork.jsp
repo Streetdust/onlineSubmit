@@ -1,8 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>Flatty - Flat administration template</title>
+    <title>onlineSubmit Teacher</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
 
     <!--[if lt IE 9]>
@@ -10,6 +12,7 @@
     <![endif]-->
     <link href='assets/stylesheets/bootstrap/bootstrap.css' media='all' rel='stylesheet' type='text/css'/>
     <link href='assets/stylesheets/bootstrap/bootstrap-responsive.css' media='all' rel='stylesheet' type='text/css'/>
+    <link href='assets/javascripts/bootstrap/bootstrap.min.css' media='all' rel='stylesheet' type='text/css'/>
     <!-- / jquery ui -->
     <link href='assets/stylesheets/jquery_ui/jquery-ui-1.10.0.custom.css' media='all' rel='stylesheet' type='text/css'/>
     <link href='assets/stylesheets/jquery_ui/jquery.ui.1.10.0.ie.css' media='all' rel='stylesheet' type='text/css'/>
@@ -71,7 +74,7 @@
             <div class='container-fluid'>
                 <a class='brand' href='index-stu.jsp'>
                     <i class='icon-heart-empty'></i>
-                    <span class='hidden-phone'>Flatty</span>
+                    <span class='hidden-phone'>onlineSubmit</span>
                 </a>
                 <a class='toggle-nav btn pull-left' href='#'>
                     <i class='icon-reorder'></i>
@@ -91,12 +94,7 @@
                                     Light
                                     <small>(default)</small>
                                 </a>
-                                <a data-change-to='assets/stylesheets/dark-theme.css' href='#'>
-                                    Dark
-                                </a>
-                                <a data-change-to='assets/stylesheets/dark-blue-theme.css' href='#'>
-                                    Dark blue
-                                </a>
+                               
                             </li>
                             <li class='divider'></li>
                             <li class='color-settings-contrast-color'>
@@ -155,111 +153,28 @@
                     <li class='dropdown medium only-icon widget'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <i class='icon-rss'></i>
-                            <div class='label'>5</div>
                         </a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            John Doe signed up
-                                            <small class='muted'>just now</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #002
-                                            <small class='muted'>3 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            America Leannon commented Flatty with veeery long text.
-                                            <small class='muted'>1 hour ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            Jane Doe signed up
-                                            <small class='muted'>last week</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #001
-                                            <small class='muted'>1 year ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='widget-footer'>
-                                <a href='#'>所有消息</a>
-                            </li>
-                        </ul>
+                        
                     </li>
                     <!-- 消息提示栏 end -->
-
 
                     <!-- 用户栏 start -->
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23'/>
-                            <span class='user-name hidden-phone'>张希光</span>
+                            <span class='user-name hidden-phone'>${nowteacher.teacherName }</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
                             <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-user'></i>
-                                    个人中心
-                                </a>
-                            </li>
-                            <li>
-                                <a href='user_profile.html'>
-                                    <i class='icon-cog'></i>
-                                    设置
+                                <a href='teacherctlr/person.do?techerId=${nowteacher.teacherId }'>
+                                    <i class='icon-user'></i>个人中心
                                 </a>
                             </li>
                             <li class='divider'></li>
                             <li>
-                                <a href='sign_in.html'>
-                                    <i class='icon-signout'></i>
-                                    安全退出
+                                <a href='login.jsp'>
+                                    <i class='icon-signout'></i>安全退出
                                 </a>
                             </li>
                         </ul>
@@ -268,139 +183,52 @@
                 </ul>
                 <!-- 导航栏右侧 end -->
 
-
-                <!-- 导航栏搜索栏 start -->
-                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone"
-                      method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..."
-                       type="text" value=""/>
-                </form>
-                <!-- 导航栏搜索栏 end -->
-
-
-            </div>
         </div>
+    </div>
     </div>
 </header>
 <div id='wrapper'>
     <div id='main-nav-bg'></div>
     <nav class='' id='main-nav'>
         <div class='navigation'>
-
-            <div class='search'>
-                <!--不知道干啥的搜索框（暂时注掉） start-->
-                <form accept-charset="UTF-8" action="search_results.html" method="get"/>
-                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;"/></div>
-                <div class='search-wrapper'>
-                    <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text"
-                           value=""/>
-                    <button class="btn btn-link icon-search" name="button" type="submit"></button>
-                </div>
-                </form>
-                <!--不知道干啥的搜索框（暂时注掉） end-->
-            </div>
-
-
             <!--左侧导航栏 start-->
             <ul class='nav nav-stacked'>
-                <li class=''>
+                <li class='active'>
                     <a href='index-teacher.jsp'>
                         <i class='icon-dashboard'></i>
                         <span>主页</span>
                     </a>
                 </li>
                 <li class=''>
-                    <a class='dropdown-collapse' href='#'>
+                    <a class='dropdown-collapse'>
                         <i class='icon-edit'></i>
                         <span>查看所有作业</span>
                         <i class='icon-angle-down angle-down'></i>
                     </a>
                     <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>数学</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a class='dropdown-collapse' href='allHomework-teacher.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>英语</span>
-                            </a>
-                        </li>
-                        <li class=''>
-                            <a href='allHomework-teacher.jsp'>
-                                <i class='icon-caret-right'></i>
-                                <span>计算机</span>
-                            </a>
-                        </li>
+                    	<c:forEach items="${courseClass }" var="cc">
+                    		<li>
+	                            <a class='dropdown-collapse'>
+	                                <i class='icon-caret-right'></i>
+	                                <span>${cc.course.courseName }</span>
+	                                <i class='icon-angle-down angle-down'></i>
+	                            </a>
+	                            <ul class='nav nav-stacked'>
+	                                <c:forEach items="${cc.classes }" var="cla">
+	                                	<li>
+		                                    <a href='teacherctlr/listTasks.do?classId=${cla.classId }'>
+		                                        <i class='icon-caret-right'></i>
+		                                        <span>${cc.course.classDepa }${cc.course.classMajor }${cla.classNum }</span>
+		                                    </a>
+	                               	 	</li>
+	                                </c:forEach>
+	                            </ul>
+                       	 </li>	
+                    	</c:forEach>
+                        
                     </ul>
                 </li>
 
-                <li class=''>
-                    <a class='dropdown-collapse ' href='#'>
-                        <i class='icon-tint'></i>
-                        <span>查看已交作业</span>
-                        <i class='icon-angle-down angle-down'></i>
-                    </a>
-                    <ul class='nav nav-stacked'>
-                        <li>
-                            <a class='dropdown-collapse' href='#'>
-                                <i class='icon-caret-right'></i>
-                                <span>语文</span>
-                                <i class='icon-angle-down angle-down'></i>
-                            </a>
-                            <ul class='nav nav-stacked'>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级一班</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='downHomeWork.jsp'>
-                                        <i class='icon-caret-right'></i>
-                                        <span>三年级二班</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
                 <li class=''>
                     <a href='classInfo-teacher.jsp'>
                         <i class='icon-star'></i>
@@ -408,7 +236,7 @@
                     </a>
                 </li>
 
-                <li class='active'>
+                <li class=''>
                     <a href='addNewHomeWork.jsp'>
                         <i class='icon-calendar'></i>
                         <span>发布新作业</span>
@@ -416,12 +244,11 @@
                 </li>
 
                 <li class=''>
-                    <a href='addNewNotice.jsp'>
+                    <a href='teacherctlr/listTasks.do?classId=-1'>
                         <i class='icon-calendar'></i>
                         <span>公告栏管理</span>
                     </a>
                 </li>
-
 
             </ul>
             <!--左侧导航栏 end-->
@@ -489,8 +316,8 @@
                                     </div>
                                     <div class='step-content'>
                                         <hr class='hr-normal'/>
-                                        <form accept-charset="UTF-8" action="#" class="form" method="post"
-                                              style="margin-bottom: 0;"/>
+                                        <form accept-charset="UTF-8" action="teacherctlr/publicTask.do" class="form" method="post"
+                                              style="margin-bottom: 0px;" enctype="multipart/form-data">
                                         <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden"
                                                                                               value="&#x2713;"/><input
                                                 name="authenticity_token" type="hidden"
@@ -517,124 +344,16 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
+                                                            <input type="hidden" name="teacherId" value="${nowteacher.teacherId }">
                                                             <div class='box-content'>
                                                                 <div class='row-fluid'>
                                                                     <div class='span12'>
                                                                         <div class='row-fluid'>
                                                                             <strong>班级列表</strong>
                                                                             <select id="inputText"
-                                                                                    class='select2 input-block-level'>
-                                                                                <optgroup
-                                                                                        label='Alaskan/Hawaiian Time Zone'>
-                                                                                    <option value='AK'/>
-                                                                                    Alaska
-                                                                                    <option value='HI'/>
-                                                                                    Hawaii
-                                                                                </optgroup>
-                                                                                <optgroup label='Pacific Time Zone'>
-                                                                                    <option value='CA'/>
-                                                                                    California
-                                                                                    <option value='NV'/>
-                                                                                    Nevada
-                                                                                    <option value='OR'/>
-                                                                                    Oregon
-                                                                                    <option value='WA'/>
-                                                                                    Washington
-                                                                                </optgroup>
-                                                                                <optgroup label='Mountain Time Zone'>
-                                                                                    <option value='AZ'/>
-                                                                                    Arizona
-                                                                                    <option value='CO'/>
-                                                                                    Colorado
-                                                                                    <option value='ID'/>
-                                                                                    Idaho
-                                                                                    <option value='MT'/>
-                                                                                    Montana
-                                                                                    <option value='NE'/>
-                                                                                    Nebraska
-                                                                                    <option value='NM'/>
-                                                                                    New Mexico
-                                                                                    <option value='ND'/>
-                                                                                    North Dakota
-                                                                                    <option value='UT'/>
-                                                                                    Utah
-                                                                                    <option value='WY'/>
-                                                                                    Wyoming
-                                                                                </optgroup>
-                                                                                <optgroup label='Central Time Zone'>
-                                                                                    <option value='AL'/>
-                                                                                    Alabama
-                                                                                    <option value='AR'/>
-                                                                                    Arkansas
-                                                                                    <option value='IL'/>
-                                                                                    Illinois
-                                                                                    <option value='IA'/>
-                                                                                    Iowa
-                                                                                    <option value='KS'/>
-                                                                                    Kansas
-                                                                                    <option value='KY'/>
-                                                                                    Kentucky
-                                                                                    <option value='LA'/>
-                                                                                    Louisiana
-                                                                                    <option value='MN'/>
-                                                                                    Minnesota
-                                                                                    <option value='MS'/>
-                                                                                    Mississippi
-                                                                                    <option value='MO'/>
-                                                                                    Missouri
-                                                                                    <option value='OK'/>
-                                                                                    Oklahoma
-                                                                                    <option value='SD'/>
-                                                                                    South Dakota
-                                                                                    <option value='TX'/>
-                                                                                    Texas
-                                                                                    <option value='TN'/>
-                                                                                    Tennessee
-                                                                                    <option value='WI'/>
-                                                                                    Wisconsin
-                                                                                </optgroup>
-                                                                                <optgroup label='Eastern Time Zone'>
-                                                                                    <option value='CT'/>
-                                                                                    Connecticut
-                                                                                    <option value='DE'/>
-                                                                                    Delaware
-                                                                                    <option value='FL'/>
-                                                                                    Florida
-                                                                                    <option value='GA'/>
-                                                                                    Georgia
-                                                                                    <option value='IN'/>
-                                                                                    Indiana
-                                                                                    <option value='ME'/>
-                                                                                    Maine
-                                                                                    <option value='MD'/>
-                                                                                    Maryland
-                                                                                    <option value='MA'/>
-                                                                                    Massachusetts
-                                                                                    <option value='MI'/>
-                                                                                    Michigan
-                                                                                    <option value='NH'/>
-                                                                                    New Hampshire
-                                                                                    <option value='NJ'/>
-                                                                                    New Jersey
-                                                                                    <option value='NY'/>
-                                                                                    New York
-                                                                                    <option value='NC'/>
-                                                                                    North Carolina
-                                                                                    <option value='OH'/>
-                                                                                    Ohio
-                                                                                    <option value='PA'/>
-                                                                                    Pennsylvania
-                                                                                    <option value='RI'/>
-                                                                                    Rhode Island
-                                                                                    <option value='SC'/>
-                                                                                    South Carolina
-                                                                                    <option value='VT'/>
-                                                                                    Vermont
-                                                                                    <option value='VA'/>
-                                                                                    Virginia
-                                                                                    <option value='WV'/>
-                                                                                    West Virginia
-                                                                                </optgroup>
+                                                                                    class='select2 input-block-level' name="classId">
+                                                                                <option value='1'>软工1611</option>
+                                                                                <option value='2'>软工1612</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -657,8 +376,7 @@
                                                     <div class='row-fluid'>
                                                         <div class='span4 box bordered-box blue-border'>
                                                             <div class='box-header blue-background'>
-                                                                <div class='title'>
-                                                                    选择科目
+                                                                <div class='title'>选择科目
                                                                 </div>
                                                                 <div class='actions'>
                                                                     <a href="#"
@@ -676,118 +394,9 @@
                                                                         <div class='row-fluid'>
                                                                             <strong>科目列表</strong>
                                                                             <select id="inputPassword"
-                                                                                    class='select2 input-block-level'>
-                                                                                <optgroup
-                                                                                        label='Alaskan/Hawaiian Time Zone'>
-                                                                                    <option value='AK'/>
-                                                                                    Alaska
-                                                                                    <option value='HI'/>
-                                                                                    Hawaii
-                                                                                </optgroup>
-                                                                                <optgroup label='Pacific Time Zone'>
-                                                                                    <option value='CA'/>
-                                                                                    California
-                                                                                    <option value='NV'/>
-                                                                                    Nevada
-                                                                                    <option value='OR'/>
-                                                                                    Oregon
-                                                                                    <option value='WA'/>
-                                                                                    Washington
-                                                                                </optgroup>
-                                                                                <optgroup label='Mountain Time Zone'>
-                                                                                    <option value='AZ'/>
-                                                                                    Arizona
-                                                                                    <option value='CO'/>
-                                                                                    Colorado
-                                                                                    <option value='ID'/>
-                                                                                    Idaho
-                                                                                    <option value='MT'/>
-                                                                                    Montana
-                                                                                    <option value='NE'/>
-                                                                                    Nebraska
-                                                                                    <option value='NM'/>
-                                                                                    New Mexico
-                                                                                    <option value='ND'/>
-                                                                                    North Dakota
-                                                                                    <option value='UT'/>
-                                                                                    Utah
-                                                                                    <option value='WY'/>
-                                                                                    Wyoming
-                                                                                </optgroup>
-                                                                                <optgroup label='Central Time Zone'>
-                                                                                    <option value='AL'/>
-                                                                                    Alabama
-                                                                                    <option value='AR'/>
-                                                                                    Arkansas
-                                                                                    <option value='IL'/>
-                                                                                    Illinois
-                                                                                    <option value='IA'/>
-                                                                                    Iowa
-                                                                                    <option value='KS'/>
-                                                                                    Kansas
-                                                                                    <option value='KY'/>
-                                                                                    Kentucky
-                                                                                    <option value='LA'/>
-                                                                                    Louisiana
-                                                                                    <option value='MN'/>
-                                                                                    Minnesota
-                                                                                    <option value='MS'/>
-                                                                                    Mississippi
-                                                                                    <option value='MO'/>
-                                                                                    Missouri
-                                                                                    <option value='OK'/>
-                                                                                    Oklahoma
-                                                                                    <option value='SD'/>
-                                                                                    South Dakota
-                                                                                    <option value='TX'/>
-                                                                                    Texas
-                                                                                    <option value='TN'/>
-                                                                                    Tennessee
-                                                                                    <option value='WI'/>
-                                                                                    Wisconsin
-                                                                                </optgroup>
-                                                                                <optgroup label='Eastern Time Zone'>
-                                                                                    <option value='CT'/>
-                                                                                    Connecticut
-                                                                                    <option value='DE'/>
-                                                                                    Delaware
-                                                                                    <option value='FL'/>
-                                                                                    Florida
-                                                                                    <option value='GA'/>
-                                                                                    Georgia
-                                                                                    <option value='IN'/>
-                                                                                    Indiana
-                                                                                    <option value='ME'/>
-                                                                                    Maine
-                                                                                    <option value='MD'/>
-                                                                                    Maryland
-                                                                                    <option value='MA'/>
-                                                                                    Massachusetts
-                                                                                    <option value='MI'/>
-                                                                                    Michigan
-                                                                                    <option value='NH'/>
-                                                                                    New Hampshire
-                                                                                    <option value='NJ'/>
-                                                                                    New Jersey
-                                                                                    <option value='NY'/>
-                                                                                    New York
-                                                                                    <option value='NC'/>
-                                                                                    North Carolina
-                                                                                    <option value='OH'/>
-                                                                                    Ohio
-                                                                                    <option value='PA'/>
-                                                                                    Pennsylvania
-                                                                                    <option value='RI'/>
-                                                                                    Rhode Island
-                                                                                    <option value='SC'/>
-                                                                                    South Carolina
-                                                                                    <option value='VT'/>
-                                                                                    Vermont
-                                                                                    <option value='VA'/>
-                                                                                    Virginia
-                                                                                    <option value='WV'/>
-                                                                                    West Virginia
-                                                                                </optgroup>
+                                                                                    class='select2 input-block-level' name="courseId">
+                                                                                <option value='math'>数学</option>
+                                                                                <option value='english'>英语</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -812,24 +421,19 @@
                                                         <div class='control-group'>
                                                             <label class='control-label'>作业内容如下:</label>
                                                             <div class='controls'>
-                                                                <span id="homeworkInfo"
-                                                                      class='input-xlarge uneditable-input'>Some value here</span>
+																<textarea rows="10" class="from-contolr" name="taskDesc"></textarea>
                                                             </div>
-                                                        </div>
-                                                        <!-- 加载编辑器的容器 -->
-                                                        <script id="container" name="content" type="text/plain">
-                                                              在这里输入你的作业详情...
-
-
-
-                                                        </script>
+                                                      	</div>
+                                                      	<div class="control-group">
+														    <label for="inputfile">文件输入</label>
+														    <input type="file" id="inputfile" name="file">
+														 </div>
+														                                                       
                                                         <button id="submitHomeWorkInfo" class="btn btn-success"
-                                                                name="button" style="margin-bottom:5px" type="button">
-                                                            点击提交
+                                                                name="button" style="margin-bottom:5px" type="button">点击提交
                                                         </button>
                                                         <button id="concelSubmitHomeWorkInfo" class="btn btn-danger"
-                                                                name="button" style="margin-bottom:5px" type="button">
-                                                            取消填写
+                                                                name="button" style="margin-bottom:5px" type="button">取消填写
                                                         </button>
                                                     </div>
                                                     <!--第三部分内容 end-->
@@ -859,14 +463,14 @@
                                                         <div class='box-content'>
 
                                                             <div class='row-fluid'>
-                                                                <strong>日期</strong>
+                                                                <strong>截止日期</strong>
                                                                 <div>
                                                                     <div class='datepicker input-append'
                                                                          id='datepicker'>
                                                                         <input class='input-medium'
                                                                                data-format='yyyy-MM-dd'
-                                                                               placeholder='选择截止日期'
-                                                                               type='text'/>
+                                                                               placeholder='截止日期'
+                                                                               type='text' name="preDate"/>
                                                                         <span class='add-on'>
                                                                         <i data-date-icon='icon-calendar' data-time-icon='icon-time'></i>
                                                                         </span>
@@ -876,11 +480,11 @@
 
                                                             <hr class='hr-normal'/>
                                                             <div class='row-fluid'>
-                                                                <strong>时间</strong>
+                                                                <strong>截止时间</strong>
                                                                 <div>
                                                                     <div class='timepicker input-append'
                                                                          id='timepicker'>
-                                                                        <input class='input-medium'
+                                                                        <input name="sufDate" class='input-medium'
                                                                                data-format='hh:mm:ss'
                                                                                placeholder='选择截止时间'
                                                                                type='text'/>
@@ -890,7 +494,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
 
@@ -898,19 +501,14 @@
 
                                                 <hr class='hr-normal'/>
                                                 <button id="submitHomeWork" class="btn btn-success"
-                                                        name="button" style="margin-bottom:5px" type="button">
-                                                    确认提交作业
-                                                </button>
+                                                name="button" style="margin-bottom:5px" type="submit">确认提交作业</button>
                                                 <button id="concelSubmitHomeWork" class="btn btn-danger"
-                                                        name="button" style="margin-bottom:5px" type="button">
-                                                    取消提交
-                                                </button>
+                                                name="button" style="margin-bottom:5px" type="reset">取消提交</button>
 
                                                 <!--第四部分内容 end-->
-
                                             </div>
-
                                         </div>
+                                        </form>
                                     </div>
 
                                     <!--正文内容填充区 end-->
